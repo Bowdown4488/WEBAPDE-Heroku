@@ -18,9 +18,15 @@
   <script>
   $(document).ready(function(){
     $(".meme").click(function(){
-
+        alert("Enter");
     });
   }); 
+      
+  $(document).ready(function(){
+       $(".meme").hover(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+       });    
+});
   </script>
   <style>
     .col-sm-2 {
@@ -126,6 +132,7 @@
         <button type="submit" class="btn btn-default">Search</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
+        <li><button type="button" class="btn btn-default btn-lg" id="signup-button">Sign-up</button></li>
         <li><button type="button" class="btn btn-default btn-lg" id="login-button">Login</button></li>
       </ul>
     </div>
@@ -194,7 +201,7 @@
           <div class="panel-heading"><h1>Ichigo means strawberry in Japanese</h1></div>
           <div class="panel-body">
             <div class="memeframe">
-            <div class="memecontainer"><img src="./ichigo.jpg" class="meme"></div>
+            <div class="memecontainer"><img src="./ichigo.jpg"  class="meme"></div>
             </div>
           </div>
         </div>
@@ -203,6 +210,14 @@
           <div class="panel-body">
             <div class="memeframe">
             <div class="memecontainer"><img src="./pinoy.jpg" class="meme"></div>
+            </div>
+          </div>
+        </div>
+             <div class="panel panel-default">
+          <div class="panel-heading"><h1>Cute Puppy</h1></div>
+          <div class="panel-body">
+            <div class="memeframe">
+            <div class="memecontainer"><img src="./gif.jpg" class="meme"></div>
             </div>
           </div>
         </div>
