@@ -29,14 +29,19 @@
 });
   </script>
   <style>
-    .col-sm-2 {
-      background-color: cyan;
-      color: white;
+    /*.col-sm-2 {
+      background-color: #b3b3ff;
+      color: green;
+      flex-grow: 1;
+    }*/
+
+    /*.col-sm-4 {
+    	border: solid pink;
+    }*/
+    .main-header {
+      color: #e6e6e6;
     }
 
-    .main-header {
-      color: white;
-    }
     .memeframe {
       max-height: 450px;
       max-width: 80%;
@@ -53,20 +58,29 @@
 
     .meme {
       max-height: 425px;
+      min-height: 100%;
       max-width: 70%;
+      min-width: 100%;
     }
+
     .panel {
-      width: 60%;
+      width: 100%;
+      min-height: 300px;
     }
 
     .panel-group {
       margin: auto;
     }
-    .panel-body {
 
+    .panel-body {
       align-content: center;
       justify-content: center;
+      padding: 2px;
+    }
 
+    .panel-heading {
+   	  size: 20%;
+   	  height: 100px
     }
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -75,8 +89,8 @@
     }
     
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 450px}
-    
+    .row.content {height: 100px}
+    .row {margin-bottom: 5px}
     /* Set gray background color and 100% height */
     /*.sidenav {
       padding-top: 20px;
@@ -101,7 +115,7 @@
     }
 
     body {
-      background-color: #1a1a1a;
+      background-color: #404040;
     }
   </style>
 </head>
@@ -160,7 +174,7 @@
             </div>
             <div class="form-group">
               <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-              <input type="text" class="form-control" id="psw" placeholder="Enter password">
+              <input type="password" class="form-control" id="psw" placeholder="Enter password">
             </div>
             <div class="checkbox">
               <label><input type="checkbox" value="" checked>Remember me</label>
@@ -182,60 +196,98 @@
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <p><a href="#">Hot</a></p>
+      <!-- <p><a href="#">Hot</a></p>
       <p><a href="#">Random</a></p>
-      <p><a href="#">Favorites</a></p>
+      <p><a href="#">Favorites</a></p> -->
     </div>
     <div class="col-sm-8 text-left"> 
       <div class="main-header ">
-      <h1>E+A Memes</h1>
+      <h1>MEME FACTORY</h1>
       <p>web development is a meme</p>
       <hr>
       </div>
       
       <!-- <h3>Test</h3>
       <p>Lorem ipsum...</p> -->
-      <div class="container">
-      <div class="panel-group">
+      
+    </div> 
+  </div>
+  <div class="row">
+  	<div class="container">
+  	<div class="panel-group">
+  	<div class="col-sm-4 text-left">
         <div class="panel panel-default">
-          <div class="panel-heading"><h1>Ichigo means strawberry in Japanese</h1></div>
+          <div class="panel-heading"><h1 class="lead">Ichigo means strawberry in Japanese</h1></div>
           <div class="panel-body">
             <div class="memeframe">
             <div class="memecontainer"><img src="./ichigo.jpg"  class="meme"></div>
             </div>
           </div>
         </div>
+    </div>   
+     <div class="col-sm-4 text-left">   
         <div class="panel panel-default">
-          <div class="panel-heading"><h1>Quality Pinoy Memes</h1></div>
+          <div class="panel-heading"><h1 class="lead">Quality Pinoy Memes</h1></div>
           <div class="panel-body">
             <div class="memeframe">
             <div class="memecontainer"><img src="./pinoy.jpg" class="meme"></div>
             </div>
           </div>
         </div>
-             <div class="panel panel-default">
-          <div class="panel-heading"><h1>Cute Puppy</h1></div>
+    </div>
+    <div class="col-sm-4 text-left">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h1 class="lead">Cute Puppy</h1></div>
           <div class="panel-body">
             <div class="memeframe">
             <div class="memecontainer"><img src="./gif.jpg" class="meme"></div>
             </div>
           </div>
         </div>
-        <div class="panel panel-default">
-          <div class="panel-heading"><h1>When she ain't loyal</h1></div>
+    </div>  
+    </div>  
+  	</div>
+  </div>
+  
+  	<div class="row">
+  	<div class="container">
+  	<div class="panel-group">
+  		<div class="col-sm-4 text-left">
+  		<div class="panel panel-default">
+          <div class="panel-heading"><h1 class="lead">When she ain't loyal</h1></div>
           <div class="panel-body">
             <div class="memeframe">
             <div class="memecontainer"><img src="./thot alarm.jpg" class="meme"></div>
             </div>
           </div>
         </div>
-      </div>
-      </div>
-    </div>
-      
-
-    
-  </div>
+    	</div>
+	</div>
+	</div>
+  	</div>
+  	<div class="container-fluid" style="float: right;">
+  	<table>
+  		<tr>
+  		<td>
+  			<ul class="pagination">
+			    <li class="active"><a href="#">1</a></li>
+			    <li><a href="#">2</a></li>
+			    <li><a href="#">3</a></li>
+			    <li><a href="#">4</a></li>
+			    <li><a href="#">5</a></li>
+			</ul>
+  		</td>
+  		<td>
+  			<ul class="pager">
+			  <li><a href="#">Previous</a></li>
+			  <li><a href="#">Next</a></li>
+			</ul>
+  		</td>
+  		
+  		</tr>
+  	</table>
+	  
+	</div>
 </div>
 
 <!-- <footer class="container-fluid text-center">
