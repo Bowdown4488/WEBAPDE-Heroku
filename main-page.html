@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
   <script>
   $(document).ready(function(){
     $("#login-button").click(function(){
@@ -16,19 +17,10 @@
   });
   </script>
   <script>
-  $(document).ready(function(){
-    $(".meme").click(function(){
-        alert("Enter");
-    });
-  }); 
-      
-  $(document).ready(function(){
-       $(".meme").hover(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
-       });    
-});
     
-
+$(document).ready(function(){
+    $('.materialboxed').materialbox();
+  });
     
   </script>
   <style>
@@ -152,7 +144,7 @@
         <button type="submit" class="btn btn-default">Search</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><button type="button" class="btn btn-default btn-lg" id="signup-button">Sign-up</button></li>
+        <li><a href = "sign-up.html" class="btn btn-default btn-lg" id="signup-button">Sign-up</a></li>
         <li><button type="button" class="btn btn-default btn-lg" id="login-button">Login</button></li>
       </ul>
     </div>
@@ -226,7 +218,7 @@
           <div class="panel-heading"><h1 class="lead">Ichigo means strawberry in Japanese</h1></div>
           <div class="panel-body">
             <div class="memeframe">
-            <div class="memecontainer"><img src="./ichigo.jpg"  class="meme"></div>
+            <div class="memecontainer materialboxed"><img src="./ichigo.jpg"  class="meme"></div>
             <p>Posted by : Admin</p>
             <span><button type="button" class="btn-link">Franxx</button> <button type="button" class="btn-link">Ichigo</button>
             <button type="button" class="btn-link">Anime</button> <button type="button" class="btn-link">02</button>
@@ -241,7 +233,7 @@
           <div class="panel-heading"><h1 class="lead">Quality Pinoy Memes</h1></div>
           <div class="panel-body">
             <div class="memeframe">
-            <div class="memecontainer"><img src="./pinoy.jpg" class="meme">
+            <div class="memecontainer materialboxed"><img src="./pinoy.jpg" class="meme">
             <p>Posted by : Admin</p>
             <span> <button type="button" class="btn-link">Pinoy</button> <button type="button" class="btn-link">Golden</button>
             <button type="button" class="btn-link">Advance mag isip</button> <button type="button" class="btn-link">Wala na Finish na Talaga</button>
@@ -256,7 +248,7 @@
           <div class="panel-heading"><h1 class="lead">Cute Puppy</h1></div>
           <div class="panel-body">
             <div class="memeframe">
-            <div class="memecontainer"><img src="./gif.jpg" class="meme"></div>
+            <div class="memecontainer materialboxed"><img src="./gif.jpg" class="meme"></div>
             <p> Posted by : Admin</p>
             <span><button type="button" class="btn-link">Kyot</button> <button type="button" class="btn-link">Pupper</button>
             <button type="button" class="btn-link">Doggo</button>
@@ -277,7 +269,7 @@
           <div class="panel-heading"><h1 class="lead">When she ain't loyal</h1></div>
           <div class="panel-body">
             <div class="memeframe">
-                <div class="memecontainer"><img src="./thot alarm.jpg" class="meme">
+                <div class="memecontainer materialboxed"><img src="./thot alarm.jpg" class="meme">
                 <p> Tags:</p>
                 <span><button type="button" class="btn-link">Thot</button> <button type="button" class="btn-link">Sad</button>
                 <button type="button" class="btn-link">Family Guy</button> <button type="button" class="btn-link">Bird is the Word</button>
@@ -292,7 +284,7 @@
           <div class="panel-heading"><h1 class="lead">R.I.P</h1></div>
           <div class="panel-body">
             <div class="memeframe">
-                <div class="memecontainer"><img src="./itscominghome.jpg" class="meme">
+                <div class="memecontainer materialboxed"><img src="./itscominghome.jpg" class="meme">
                 <p> Posted by : Admin</p>
                 <span><button type="button" class="btn-link">RIP</button> <button type="button" class="btn-link">Truth</button>
                 <button type="button" class="btn-link">Croatia</button> <button type="button" class="btn-link">WorldCup</button>
@@ -308,7 +300,7 @@
           <div class="panel-heading"><h1 class="lead">College got me like</h1></div>
           <div class="panel-body">
             <div class="memeframe">
-                <div class="memecontainer"><img src="./dissolve.png" class="meme">
+                <div class="memecontainer materialboxed"><img src="./dissolve.png" class="meme">
                 <p> Posted by : Admin</p>
                 <span><button type="button" class="btn-link">Dissolve</button> <button type="button" class="btn-link">College</button>
                 </span>
@@ -328,7 +320,7 @@
           <div class="panel-heading"><h1 class="lead">middle korea best korea</h1></div>
           <div class="panel-body">
             <div class="memeframe">
-                <div class="memecontainer"><img src="./northkorea.jpg" class="meme">
+                <div class="memecontainer materialboxed"><img src="./northkorea.jpg" class="meme">
                 <p> Posted by : Admin</p>
                 <span><button type="button" class="btn-link">Anime</button> <button type="button" class="btn-link">Traps are not GAY</button>
                 </span>
@@ -342,7 +334,7 @@
           <div class="panel-heading"><h1 class="lead">*Lenny Face*</h1></div>
           <div class="panel-body">
             <div class="memeframe">
-                <div class="memecontainer"><img src="./lenny.png" class="meme">
+                <div class="memecontainer materialboxed"><img src="./lenny.png" class="meme">
                 <p> Posted by : Admin</p>
                 <span><button type="button" class="btn-link">Lenny Face</button> <button type="button" class="btn-link">XD</button>
                 <button type="button" class="btn-link">( ͡° ͜ʖ ͡°)</button> 
@@ -357,7 +349,7 @@
           <div class="panel-heading"><h1 class="lead">Politerino</h1></div>
           <div class="panel-body">
             <div class="memeframe">
-                <div class="memecontainer"><img src="./politecat.jpg" class="meme">
+                <div class="memecontainer materialboxed"><img src="./politecat.jpg" class="meme">
                 <p> Posted by : Admin</p>
                 <span><button type="button" class="btn-link">CAT</button>
                 </span>
@@ -377,7 +369,7 @@
           <div class="panel-heading"><h1 class="lead">save the turtles thanks</h1></div>
           <div class="panel-body">
             <div class="memeframe">
-                <div class="memecontainer"><img src="./seaturtles.jpg" class="meme">
+                <div class="memecontainer materialboxed"><img src="./seaturtles.jpg" class="meme">
                 <p> Posted by : Admin</p>
                 <span><button type="button" class="btn-link">Save Earth chan</button> <button type="button" class="btn-link">Turtles</button>
                 </span>
@@ -391,7 +383,7 @@
           <div class="panel-heading"><h1 class="lead">yes</h1></div>
           <div class="panel-body">
             <div class="memeframe">
-                <div class="memecontainer"><img src="./memesnow.png" class="meme">
+                <div class="memecontainer materialboxed"><img src="./memesnow.png" class="meme">
                 <p> Posted by : Admin</p>
                 <span><button type="button" class="btn-link">Yes</button> <button type="button" class="btn-link">The Future</button>
                 </span>
@@ -405,7 +397,7 @@
           <div class="panel-heading"><h1 class="lead">Grossly Incandescent</h1></div>
           <div class="panel-body">
             <div class="memeframe">
-                <div class="memecontainer"><img src="./tpose.jpg" class="meme">
+                <div class="memecontainer materialboxed"><img src="./tpose.jpg" class="meme">
                 <p> Posted by : Admin</p>
                 <span><button type="button" class="btn-link">Facts</button>
                 </span>
@@ -425,7 +417,7 @@
           <div class="panel-heading"><h1 class="lead">BBBBBBBBBBBBBBB</h1></div>
           <div class="panel-body">
             <div class="memeframe">
-                <div class="memecontainer"><img src="./stolen.png" class="meme">
+                <div class="memecontainer materialboxed"><img src="./stolen.png" class="meme">
                 <p> Posted by : Admin</p>
                 <span><button type="button" class="btn-link">Dank</button>
                 </span>
@@ -439,7 +431,7 @@
           <div class="panel-heading"><h1 class="lead">...obama?</h1></div>
           <div class="panel-body">
             <div class="memeframe">
-                <div class="memecontainer"><img src="./obama.jpg" class="meme">
+                <div class="memecontainer materialboxed"><img src="./obama.jpg" class="meme">
                 <p> Posted by : Admin</p>
                 <span><button type="button" class="btn-link">Obama</button> <button type="button" class="btn-link">Reeeeeee</button>
                 </span>
@@ -453,7 +445,7 @@
           <div class="panel-heading"><h1 class="lead">PH right now</h1></div>
           <div class="panel-body">
             <div class="memeframe">
-                <div class="memecontainer"><img src="./deadmayor.jpg" class="meme">
+                <div class="memecontainer materialboxed"><img src="./deadmayor.jpg" class="meme">
                 <p> Posted by : Admin</p>
                 <span><button type="button" class="btn-link">Suspended</button> <button type="button" class="btn-link">Dark Humor</button>
                 </span>
