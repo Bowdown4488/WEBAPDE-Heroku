@@ -33,10 +33,26 @@
     }
 
     body {
-      background-color: #1a1a1a;
-      color: white;
+      background-color:antiquewhite;
       padding-top: 70px;
+      color:black;
     }
+      
+      li{
+          list-style-type:none;
+      }
+      
+      .img{
+          margin-bottom: 10px;
+      }
+      .mid{
+        border-left: 10px dotted  black;
+        border-right: 10px dotted  black;
+        border-top: 10px dotted  black;
+        border-bottom: 10px dotted  black;
+        padding-bottom: 20px;
+        padding-top: 20px;
+      }
   </style>
 </head>
 <body>
@@ -69,53 +85,39 @@
 </nav>
 
 <div class="row">
-  <div class="container">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-3">
-    <img src="https://placehold.it/150x80?text=IMAGE" class="img" alt="upload avatar" style="border: solid black;">
+<div class="container">
+<div class="col-sm-4"></div>
+  <div class="col-sm-4 mid">
+    <img src="https://placehold.it/150x80?text=IMAGE" class="img" alt="upload avatar" style="border: solid black;"> 
+        <div>
+            <input type="file" id="avatar-button">
+        </div>
+    <form role="form">
+            <h4>Select Tag:</h4>
+            <ol class="list-group">
+            <li><input type="checkbox"><label>Hot</label> </li><li><input type="checkbox"><label>Trending</label></li>
+            <li><input type="checkbox"><label>Dark Humor</label> </li><li><input type="checkbox"><label>PC MasterRace</label></li>
+            <li><input type="checkbox"><label>WTF</label> </li><li><input type="checkbox"><label>Anime</label></li>
+            </ol>
+    </form>
+    <form role="form">
+    <h4>Select Privacy:</h4>
+    <span><input type="radio" name = "privacy"><label>Public</label></span>
+    <span><input type="radio" name = "privacy"><label>Private</label></span>
+    </form>
+        <h4>Share to Users: </h4>
+        <textarea class = "form-control" rows = 2></textarea>
     </div>
-    <div class="col-sm-2 text-center">
-    <label class="lead">Upload Meme</label>
-    <input type="file" id="avatar-button">
+    <div class="col-sm-4"> 
     </div>
   </div>
 </div>
 
-<div class="row">
-<div class="container">
-  <div class="col-sm-6">
-    <form role="form">
-            <div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-              <input type="text" class="form-control" id="usrname" placeholder="Enter username">
-            </div>
-            <div class="form-group">
-              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-              <input type="password" class="form-control" id="psw" placeholder="Enter password"><br>
-              <label for="conpsw"><span class="glyphicon glyphicon-eye-open"></span> Confirm Password</label>
-              <input type="password" class="form-control" id="conpsw" placeholder="Confirm password">
-            </div>
-          </form>
-  </div>
-  <div class="col-sm-6">
-    <form role="form">
-            <div class="form-group">
-              <label for="email"><span class="glyphicon glyphicon-info-sign"></span> Email Address</label>
-              <input type="text" class="form-control" id="email" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-              <label for="shortdesc"><span class="glyphicon glyphicon-question-sign"></span> Short Description</label>
-              <input type="text" class="form-control" id="shortdesc" placeholder="Tell us something about yourself..."><br>
-            </div>
-          </form>
-  </div>
-</div>
-</div>
 <div class="container">
   <div class="col-sm-5"></div>
   <div class="col-sm-2">
     <form action="./main-postLogin.html">
-    <button type="submit" class="btn btn-success btn-block" style="margin-top: 30px; background-color: red; border-color: red;"><span class="glyphicon glyphicon-off"></span> Sign Up
+    <button type="submit" class="btn btn-success btn-block upload" style="margin-top: 30px; background-blue: red; border-color: red;"><span class="glyphicon glyphicon-off"></span> Upload
     </button>
     </form>
   </div>
