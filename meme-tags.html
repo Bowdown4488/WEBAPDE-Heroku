@@ -33,10 +33,20 @@
     }
 
     body {
-      background-color: #1a1a1a;
-      color: white;
+      background-color:#404040;
       padding-top: 70px;
+      color:black;
     }
+      
+      li{
+          list-style-type:none;
+      }
+      
+      .img{
+          margin-bottom: 10px;
+      }
+      .mid{
+      }
   </style>
 </head>
 <body>
@@ -50,74 +60,61 @@
         <span class="icon-bar">asdf</span>                        
       </button>
       <div>
-        <a class="navbar-brand" href="./main-page.html"><img src="./HMMMmmmmMMMMmmmm.png" class="img-responsive" width="35px" height="35px"></a>
+        <a class="navbar-brand" href="./main-postLogin.html"><img src="./HMMMmmmmMMMMmmmm.png" class="img-responsive" width="35px" height="35px"></a>
       </div>
       
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="./about-pageSigned.html">About</a></li>
       </ul>
       <form class="navbar-form navbar-left" action="/action_page.php">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
-         <button type="submit" class="btn btn-default">Search</button>
         </div>
-        <a type="button" class=" btn btn-warning upload" href="./main-page.html">Upload Meme</a>
-        </form>
+        <button type="submit" class="btn btn-default">Search</button>
+      </form>
     </div>
   </div>
 </nav>
 
-<div class="jumbotron">
-  <div class="container text-center">
-    <div class="container text-center">
-    <h3>xXxMemeMaster420xXx</h3>
-    <img src="./arctic fox.jpg" class="img-circle" alt="profile pic" width="350" height="350">
-  </div>   
-    <p>"People die when they are killed."</p>
+<div class="row">
+<div class="container">
+<div class="col-sm-4"></div>
+  <div class="col-sm-4 mid">
+    <img src="https://placehold.it/150x80?text=IMAGE" class="img" alt="upload avatar" style="border: solid black;"> 
+        <div>
+            <input type="file" id="avatar-button">
+        </div>
+    <form role="form">
+            <h4>Select Tag:</h4>
+            <ol class="list-group">
+            <li><input type="checkbox"><label>Hot</label> </li><li><input type="checkbox"><label>Trending</label></li>
+            <li><input type="checkbox"><label>Dark Humor</label> </li><li><input type="checkbox"><label>PC MasterRace</label></li>
+            <li><input type="checkbox"><label>WTF</label> </li><li><input type="checkbox"><label>Anime</label></li>
+            </ol>
+    </form>
+    <form role="form">
+    <h4>Select Privacy:</h4>
+    <span><input type="radio" name = "privacy"><label>Public</label></span>
+    <span><input type="radio" name = "privacy"><label>Private</label></span>
+    </form>
+        <h4>Share to Users: </h4>
+        <textarea class = "form-control" rows = 2></textarea>
+    </div>
+    <div class="col-sm-4"> 
+    </div>
   </div>
 </div>
-  
-<div class="container-fluid bg-3 text-center">    
-  <h3>Recent memes</h3><br>
-  <div class="row">
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
+
+<div class="container">
+  <div class="col-sm-5"></div>
+  <div class="col-sm-2">
+    <form action="./main-postLogin.html">
+    <button type="submit" class="btn btn-success btn-block upload" style="margin-top: 30px; background-blue: red; border-color: red;"><span class="glyphicon glyphicon-off"></span> Upload
+    </button>
+    </form>
   </div>
-</div><br>
-
-<div class="container-fluid bg-3 text-center">    
-  <div class="row">
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-  </div>
-</div><br><br>
-
-<footer class="container-fluid text-center">
-  <p>Footer Text</p>
-</footer>
-
+</div>
 </body>
 </html>
