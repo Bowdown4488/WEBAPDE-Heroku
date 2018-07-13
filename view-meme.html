@@ -15,6 +15,32 @@
   });   
   </script>
   <style>
+    .memeframe {
+      max-height: 300px;
+      max-width: 75%;
+      align-content: center;
+      /*border: solid;*/
+      margin: auto;
+    }
+
+    .memecontainer {
+      max-height: 275px;
+      max-width: 75%;
+      margin: auto;
+    }
+
+    .meme {
+      max-height: 275px;
+      min-height: 100%;
+      max-width: 70%;
+      min-width: 80%;
+    }
+
+    .panel-heading {
+      size: 30%;
+      height: 80px;
+      background-color: grey;
+    }
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
       margin-bottom: 0;
@@ -36,6 +62,10 @@
       background-color: #1a1a1a;
       color: white;
       padding-top: 70px;
+    }
+
+    p {
+      color: cyan;
     }
   </style>
 </head>
@@ -70,54 +100,52 @@
   </div>
 </nav>
 
-<div class="jumbotron">
-  <div class="container text-center">
-    <div class="container text-center">
-    <h3>xXxMemeMaster420xXx</h3>
-    <img src="./arctic fox.jpg" class="img-circle" alt="profile pic" width="350" height="350">
-  </div>   
-    <p>"People die when they are killed."</p>
-  </div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-3 text-left"></div>
+<div class="col-sm-6 text-left">
+      <div class="panel panel-default" style="height: 500px; width: 700px; background-color: antiquewhite;">
+          <div class="panel-heading" style="background-color: #404040; color: white">
+            <span><h1 class="head"><strong>...obama?</strong></h1></span>
+            
+          </div>
+          <div class="panel-body">
+            <div class="memeframe">
+                <div class="memecontainer"><img src="./obama.jpg" class="meme"></div>
+            </div>
+              
+          </div>
+          <div class="panel-footer" style="background-color: #404040; color: white;">
+            <table>
+              <tr>
+                <td>
+                  <div class="container" style=" width: 350px; margin-left: 0px;">
+                  <small><p> Posted by : <strong>Admin</strong></p></small>
+                  <div>
+                    <label>Tags: </label>
+                    <span><input type="checkbox" name=""/></span>
+                    <button type="button" class="btn-link" style="color: yellow;">Obama</button>
+                    <span><input type="checkbox" name=""/></span>
+                    <button type="button" class="btn-link" style="color: yellow;">Reeeeeee</button>
+                  </div>
+                  <span style="color: black;"><input type="button" class="btn btn-default" name="Delete" value="Delete Selected"></span>
+                  <br>
+                  <span><input type="text" name=""></span>
+                  <span style="color: black;"><input type="button" class="btn btn-default" name="Add" value="Add Tag"></span>
+                
+                  </div>
+                </td>
+                <td>
+                  <span class="text-center">In the year 2420, Obama has decided to evolve into a new and improved human specimen. One with incomprehensible greatness.</span>
+                </td>
+              </tr>
+            </table>
+            
+            
+          </div>
+      </div>
+    </div>
 </div>
-  
-<div class="container-fluid bg-3 text-center">    
-  <h3>Recent memes</h3><br>
-  <div class="row">
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-  </div>
-</div><br>
-
-<div class="container-fluid bg-3 text-center">    
-  <div class="row">
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-  </div>
-</div><br><br>
-
-<footer class="container-fluid text-center">
-  <p>Footer Text</p>
-</footer>
-
+</div>
 </body>
 </html>
