@@ -65,6 +65,16 @@ var meme = mongoose.model('memeInfo',{
 //	}]
 })
 
+server.use(session({
+  name: 'User Session',
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+          maxAge: 1000 * 60 * 60 * 24 * 7 * 3
+}
+}))
+
 //Paths
 
 server.get('/', urlencoder,function(req, resp){
