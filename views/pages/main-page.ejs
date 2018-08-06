@@ -165,19 +165,19 @@ $(document).ready(function(){
             <span> <a href="https://accounts.google.com/ServiceLogin/signinchooser?elo=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><img src="./Google.png" class="img-rounded" width="50px" height="50px"></a></span> 
         </div>
         <div class="modal-body" style="padding:40px 50px;">
-          <form role="form">
+          <form action = 'main-postLogin' role="form">
             <div class="form-group">
               <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+              <input type="text" class="form-control" id="usrname" name = 'username' placeholder="Enter Username">
             </div>
             <div class="form-group">
               <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-              <input type="password" class="form-control" id="psw" placeholder="Enter password">
+              <input type="password" class="form-control" id="psw" name = 'password' placeholder="Enter password">
             </div>
             <div class="checkbox">
               <label><input type="checkbox" value="" checked>Remember me</label>
             </div>
-              <a type="submit" class="btn btn-success btn-block" href = "/main-postLogin"><span class="glyphicon glyphicon-off"></span> Login</a>
+              <input type="submit" class="btn btn-success btn-block" name= 'login' value = 'login'>
           </form>
         </div>
         <div class="modal-footer">
