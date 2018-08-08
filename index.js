@@ -117,24 +117,47 @@ server.get('/main-page', urlencoder,function(req, resp){
    resp.render('./pages/main-page');
 });
 
+server.get('/main-postLogin', urlencoder,function(req, resp){
+   resp.render('./pages/main-postLogin');
+});
+
+server.post('/main-postLogin', urlencoder,function(req, resp){
+//    var findUser = userModel.findOne({
+//    username: req.session.username},
+//    )
+    req.session.username = req.body.username;
+    console.log(req.body.username);
+    
+    if(req.session.username !== undefined){
+        console.log("Test:" + req.session.username);
+    resp.render('./pages/main-page');
+  }
+    else{
+    console.log(req.session.username);
+    const searchQuery = { username: req.query.username, password: req.query.password };
+    userModel.findOne(searchQuery, function (err, login) {
+      if(err) return console.error(err);
+      if(login != undefined && login._id != null){
+        req.session.username = login._id;
+        resp.render('./pages/main-postLogin',{username: req.session.username});
+      }else
+        resp.render('./pages/main-page');
+    });
+  } 
+});
+
 server.get('/sign-up', function(req, resp){
    resp.render('./pages/sign-up');
 });
 
 server.post('/main-page', function(req, resp){
     var form = new formidable.IncomingForm();
-    console.log("test");
     form.parse(req, function (err, fields, files) {
       var oldpath = files.image.path;
       var newpath = __dirname + '\\public\\new\\' + files.image.name;
       fs.rename(oldpath, newpath, function (err) {
         console.log('Saving files to new folder');
         if (err) throw err;
-//        console.log('NUMBER: '+fields.price);
-//        var num = Number(fields.price);
-//        if(isNaN(num))
-//          num = 500;
-           console.log("test");
         addUser(fields.username, fields.password ,files.image.name, fields.email , fields.userBio ,function(){ 
           resp.render('./pages/main-page');
         });//adduser to DB
