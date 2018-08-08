@@ -89,21 +89,25 @@
 <div class="col-sm-4"></div>
   <div class="col-sm-4 mid">
     <img src="https://placehold.it/150x80?text=IMAGE" class="img" alt="upload avatar" style="border: solid black;"> 
-    <form action="/user-profile">
+    <form action="user-profile" method= "post" name = 'upload' enctype="multipart/form-data">
         <div>
-            <input type="file" id="avatar-button">
+            <input type="file" name = 'memeimage' id="avatar-button">
+        </div>
+        <div>
+            <h4>Meme Title:</h4>
+            <input type="text" name = 'memeTitle' placeholder="Enter Title">
         </div>
             <h4>Select Tag:</h4>
-            <ol class="list-group">
-            <li><input type="checkbox"><label>Hot</label> </li><li><input type="checkbox"><label>Trending</label></li>
-            <li><input type="checkbox"><label>Dark Humor</label> </li><li><input type="checkbox"><label>PC MasterRace</label></li>
-            <li><input type="checkbox"><label>WTF</label> </li><li><input type="checkbox"><label>Anime</label></li>
+            <ol class="list-group" >
+            <li><input type="checkbox" name = 'memeTag' value = 'hot'><label>Hot</label> </li><li><input type="checkbox" name = 'memeTag' value = 'trending'><label>Trending</label></li>
+            <li><input type="checkbox" name = 'memeTag' value = 'dark'><label>Dark Humor</label> </li><li><input type="checkbox" name = 'memeTag' value = 'master'><label>PC MasterRace</label></li>
+            <li><input type="checkbox" name = 'memeTag' value = 'wtf'><label>WTF</label> </li><li><input type="checkbox" name = 'memeTag' value = 'anime'><label>Anime</label></li>
             </ol>
     <h4>Select Privacy:</h4>
-    <span><input type="radio" name = "privacy"><label>Public</label></span>
-    <span><input type="radio" name = "privacy"><label>Private</label></span>
+    <span><input type="radio" name = "memePrivacy" value="Public"><label>Public</label></span>
+    <span><input type="radio" name = "memePrivacy" value="Private"><label>Private</label></span>
         <h4>Share to Users: </h4>
-        <textarea class = "form-control" rows = 2></textarea>
+       <textarea class = "form-control" name ="users" rows = 2></textarea>
       <button type="submit" class="btn btn-success btn-block upload" style="margin-top: 30px; background-blue: red; border-color: red;"><span class="glyphicon glyphicon-off"></span> Upload
     </button>
     </form>
