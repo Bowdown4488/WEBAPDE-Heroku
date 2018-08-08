@@ -5,10 +5,13 @@ const bodyparser = require('body-parser')
 const session = require("express-session")
 const mongoose = require("mongoose") 
 const cookieparser = require("cookie-parser")
-const fs = require('file-system')//for files
-const multer = require('multer') //for uploading files
+const formidable = require('formidable'); 
+const fs = require('fs');
+//const fs = require('file-system')//for files
+//const multer = require('multer') //for uploading files
 
-mongoose.connect('mongodb://localhost:27017/memeDB', 
+//Heroku MLab database connection  
+mongoose.connect('mongodb://webapde-meme:memefactory1@ds115762.mlab.com:15762/heroku_fqhtqr64', //mongodb://localhost:27017/memeDB 
 {
     useNewUrlParser: true 
 });
@@ -25,16 +28,23 @@ server.use(express.static(__dirname + '/public'));
 
 //database models
 
-var user = mongoose.model('userInfo',{
+const userSchema = mongoose.Schema({
 	username : String,
 	password : String,
-	memes: [{
+    image: { type: String },
+    email: String,
+    userBio: String,
+	meme: [{
 		memeID: String,
 		memeTitle: String,
-		memeTag: String,
+		memeTag: [{
+            tag:String
+            }],
 		memeOwner: String,
 		memeDate: String,
-		commentNumber: Number
+        memeDateTime: Date,
+        memePrivacy:String,
+//		commentNumber: Number
 	}]
 //    ,
 //	memeComment: [{
@@ -43,11 +53,32 @@ var user = mongoose.model('userInfo',{
 //		commentOwner: String,
 //		commentDate: String,
 //	}]
-})
+});
+const userModel = mongoose.model('user', userSchema);
 
-var meme = mongoose.model('memeInfo',{
+function addUser(username, password, image, email, userBio, callback){
+  const instance = userModel({ username: username, password: password, image: image, email: email, userBio: userBio });
+   console.log("test");
+  instance.save(function (err, inv) {
+    if(err) return console.error(err);
+    callback();
+  });
+
+}
+
+//function viewUsers(callback){
+//  userModel.find({}, function (err, list) {
+//    if(err) return console.error(err);
+//    callback(list);
+//  });
+//}
+
+const memeSchema = mongoose.Schema({
+    memeID: String,
 	memeTitle: String,
-	memeTag: String,
+	memeTag: [{
+    tag:String
+    }],
 	memeOwner: String,
 	memeDate: String,
 	memeDateTime: Date,
@@ -55,7 +86,7 @@ var meme = mongoose.model('memeInfo',{
 //    memeShared:[{
 //        username:String
 //    }],
-	memeComment: Number
+//	memeComment: Number
 //    ,
 //	memeComment: [{
 //		memeID: String,
@@ -63,7 +94,8 @@ var meme = mongoose.model('memeInfo',{
 //		memeOwner: String,
 //		commentDate: String,
 //	}]
-})
+});
+const memeModel = mongoose.model('meme', memeSchema);
 
 server.use(session({
   name: 'User Session',
@@ -71,7 +103,7 @@ server.use(session({
   resave: true,
   saveUninitialized: true,
   cookie: {
-          maxAge: 1000 * 60 * 60 * 24 * 7 * 3
+          maxAge: 1000 * 60 * 60 * 24 * 7   //Cookie Time
 }
 }))
 
@@ -88,6 +120,27 @@ server.get('/main-page', urlencoder,function(req, resp){
 server.get('/sign-up', function(req, resp){
    resp.render('./pages/sign-up');
 });
+
+server.post('/main-page', function(req, resp){
+    var form = new formidable.IncomingForm();
+    console.log("test");
+    form.parse(req, function (err, fields, files) {
+      var oldpath = files.image.path;
+      var newpath = __dirname + '\\public\\new\\' + files.image.name;
+      fs.rename(oldpath, newpath, function (err) {
+        console.log('Saving files to new folder');
+        if (err) throw err;
+//        console.log('NUMBER: '+fields.price);
+//        var num = Number(fields.price);
+//        if(isNaN(num))
+//          num = 500;
+           console.log("test");
+        addUser(fields.username, fields.password ,files.image.name, fields.email , fields.userBio ,function(){ 
+          resp.render('./pages/main-page');
+        });//adduser to DB
+      });//rename
+    });//parse
+  });//post
 
 server.get('/user-profile', urlencoder, function(req, resp){
    resp.render('./pages/user-profile');
