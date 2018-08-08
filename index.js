@@ -148,7 +148,9 @@ server.post('/main-postLogin', urlencoder,function(req, resp){
     
     if(req.session.username !== undefined){
         console.log("Test:" + req.session.username);
-    resp.render('./pages/main-postLogin',{username: req.session.username});
+        userModel.findOne(req.session.username, function (err, foundUser) {
+              resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image});
+        });
   }
     else{
     console.log(req.session.username);
@@ -185,7 +187,11 @@ server.post('/main-page', function(req, resp){
   });//post
 
 server.get('/user-profile', urlencoder, function(req, resp){
-   resp.render('./pages/user-profile');
+    const searchUser = { username: req.session.username};
+    userModel.findOne(searchUser, function (err, foundUser) {
+         console.log("Object: " + foundUser);
+        resp.render('./pages/user-profile',{username: req.session.username, image: foundUser.image, userBio: foundUser.userBio});
+    });
 });
 
 server.get('/main-postLogin', function(req, resp){

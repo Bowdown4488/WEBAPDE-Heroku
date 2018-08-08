@@ -37,6 +37,13 @@ $(document).ready(function(){
     .main-header {
       color: #e6e6e6;
     }
+      
+      .userIcon{
+         max-height: 65px;
+         height: 65px;
+         max-width: 100px;
+        width: 100px;
+      }
 
     .memeframe {
       max-height: 450px;
@@ -145,7 +152,7 @@ $(document).ready(function(){
         
       <ul class="nav navbar-nav navbar-right" >
 <!--        <form action = '/' method="post" name = 'logout' role="form">-->
-        <li><img src="/new/<%=image%>" class="img-responsive navbar-brand" width="60px" height="35px"></li> 
+        <li><img src="/new/<%=image%>" class="img-responsive navbar-brand userIcon"></li> 
         <li><a href="/user-profile">Logged in as: <%=username%> </a></li>
         <li><a class="btn btn-default btn-lg" href = '/logout' >Logout</a></li>
 <!--        </form>-->
