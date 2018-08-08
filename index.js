@@ -110,7 +110,20 @@ server.use(session({
 //Paths
 
 server.get('/', urlencoder,function(req, resp){
-   resp.render('./pages/main-page');
+    if(req.session.username !== undefined){
+        console.log("Test:" + req.session.username);
+        const searchQuery = { username: req.body.username};
+        userModel.findOne(searchQuery, function (err, foundUser){
+            if(err) return console.error(err);
+            if(foundUser != undefined && foundUser.username != null){
+                req.session.username = foundUser.username;
+                resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image});
+            }
+        });
+    }              
+    else{
+        resp.render('./pages/main-page');
+  }
 });
 
 server.get('/main-page', urlencoder,function(req, resp){
@@ -121,25 +134,31 @@ server.get('/main-postLogin', urlencoder,function(req, resp){
    resp.render('./pages/main-postLogin');
 });
 
+server.get('/logout', function(req, resp){
+    req.session.destroy();
+    resp.redirect('/main-page');
+    });
+
 server.post('/main-postLogin', urlencoder,function(req, resp){
 //    var findUser = userModel.findOne({
 //    username: req.session.username},
 //    )
-    req.session.username = req.body.username;
-    console.log(req.body.username);
+//    req.session.username = req.body.username;
+//    console.log(req.body.username);
     
     if(req.session.username !== undefined){
         console.log("Test:" + req.session.username);
-    resp.render('./pages/main-page');
+    resp.render('./pages/main-postLogin',{username: req.session.username});
   }
     else{
     console.log(req.session.username);
-    const searchQuery = { username: req.query.username, password: req.query.password };
-    userModel.findOne(searchQuery, function (err, login) {
+    const searchQuery = { username: req.body.username, password: req.body.password };
+    userModel.findOne(searchQuery, function (err, foundUser) {
       if(err) return console.error(err);
-      if(login != undefined && login._id != null){
-        req.session.username = login._id;
-        resp.render('./pages/main-postLogin',{username: req.session.username});
+        console.log(foundUser);
+      if(foundUser != undefined && foundUser.username != null){
+        req.session.username = foundUser.username;
+        resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image});
       }else
         resp.render('./pages/main-page');
     });

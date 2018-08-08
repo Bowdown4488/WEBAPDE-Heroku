@@ -142,11 +142,13 @@ $(document).ready(function(){
         </div>
         <a type="submit" class="btn btn-default" href = "/meme-tags">Search</a>
       </form>
-
+        
       <ul class="nav navbar-nav navbar-right" >
-        <li><img src="./arctic fox.jpg" class="img-responsive" width="60px" height="35px"></li> 
+<!--        <form action = '/' method="post" name = 'logout' role="form">-->
+        <li><img src="/new/<%=image%>" class="img-responsive navbar-brand" width="60px" height="35px"></li> 
         <li><a href="/user-profile">Logged in as: <%=username%> </a></li>
-        <li><a type="submit" class="btn btn-default btn-lg" href = "/main-page">Logout</a></li>
+        <li><a class="btn btn-default btn-lg" href = '/logout' >Logout</a></li>
+<!--        </form>-->
       </ul>
     </div>
   </div>
