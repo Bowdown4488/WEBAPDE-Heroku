@@ -8,11 +8,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script>
-//    $(document).ready(function(){
-//    $(".upload").click(function(){
-//        alert("User has uploaded meme");
-//    });
-//  });   
+  $(document).ready(function(){
+    $("#edit-button").click(function(){
+        $("#edit-modal").modal();
+    });
+  });
   </script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
@@ -62,10 +62,30 @@
         </div>
         <a type="button" class=" btn btn-warning upload" href="/upload-meme">Upload Meme</a>
          <a type="button" class=" btn btn-warning upload" href="/user-memes">MY MEMEZ</a> 
+          <a type="button" class="btn btn-warning upload" id="edit-button">Edit Meme</a>
         </form>
     </div>
   </div>
 </nav>
+    
+     <!-- Modal -->
+  <div class="modal fade" id="edit-modal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body" style="padding:40px 50px;">
+          <form action = 'upload-meme' method="post" role="form">
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Meme Title</label>
+              <input type="text" class="form-control" id="usrname" name = 'memeTitle' placeholder="Enter Meme Title">
+            </div>
+              <input type="submit" class="btn btn-success btn-block" name= 'edit-meme' value = 'Edit' style="background-color: skyblue">
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
 
 <div class="jumbotron">
   <div class="container text-center">
