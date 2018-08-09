@@ -144,8 +144,8 @@ $(document).ready(function(){
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search Tags..">
         </div>
-        <input type="submit" class="btn btn-default" name='submit' value='Search'>
-
+        <input type="submit" class="btn btn-default" name='submit' value='Search' ></input>
+        <span class="glyphicon glyphicon-search"></span>
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href = "/sign-up" class="btn btn-md" style="color: white;font-size: 18px;"id="signup-button">Sign-up</a></li>
@@ -162,7 +162,7 @@ $(document).ready(function(){
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header" style="padding:35px 50px; color: black; font-weight: bold;">
-          <button type="button" class="glyphicon glyphicon-remove" data-dismiss="modal" style="size: 30px;">&times;</button>
+          <button type="button" class="close" data-dismiss="modal" style="size: 30px;">&times;</button>
           <div style="background: white; border: solid; padding: 10px 20px;"><h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
            <p> Connect with the following sites: </p></div>
            <span><a href="https://www.facebook.com/"><img src="./fb.png" class="img-rounded" width="50px" height="50px"></a></span> 
@@ -203,9 +203,25 @@ $(document).ready(function(){
       <p><a href="#">Favorites</a></p> -->
     </div>
     <div class="col-sm-8 text-left"> 
-      <div class="main-header ">
-      <h1>MEME FACTORY</h1>
-      <p>web development is a meme</p>
+      <div class="main-header " style="font-style: italic; font-weight: bold;">
+      <h1 style="font-size: 70px;">MEME FACTORY</h1>
+      <table>
+        <tr>
+          <td>
+            <div style="font-size: 30px; width: 500px;">~web development is a meme
+            </div>
+          </td>
+        
+        <td>
+          <span>
+          <img src="./datboi.gif" width="100px" height="100px" style="margin-left: 200px;">
+          </span>
+        </td>
+      </tr>
+        
+      </table>
+      
+
       <hr>
       </div>
       
