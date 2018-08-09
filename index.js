@@ -160,13 +160,7 @@ server.get('/logout', function(req, resp){
     resp.redirect('/main-page');
     });
 
-server.post('/main-postLogin', urlencoder,function(req, resp){
-//    var findUser = userModel.findOne({
-//    username: req.session.username},
-//    )
-//    req.session.username = req.body.username;
-//    console.log(req.body.username);
-    
+server.post('/main-postLogin', urlencoder,function(req, resp){    
     if(req.session.username !== undefined){
         console.log("Test:" + req.session.username);
         userModel.findOne(req.session.username, function (err, foundUser) {
@@ -264,19 +258,20 @@ server.post('/user-profile', function(req, resp){
 //    });
 
 server.get('/user-memes', function(req, resp){
-//    viewMeme(function(){ 
-//          resp.render('./pages/user-memes');
-//    });
     const searchMeme = { memeOwner: req.session.username};
     memeModel.findOne(searchMeme, function (err, foundMeme) {
     console.log("Object: " + foundMeme);
         resp.render('./pages/user-memes',{memeimage: foundMeme.memeimage});
         });
-   
 });
 
-server.get('/main-postLogin', function(req, resp){
-   resp.render('./pages/main-postLogin');
+server.post('/upload-meme', urlencoder,function(req, resp){
+    const searchMeme = { memeTitle: req.body.memeTitle};
+    memeModel.deleteOne(searchMeme, function (err, foundMeme) {
+        console.log("Deleted Object: " + foundMeme);
+        console.log("Deleted Object");
+        resp.render('./pages/upload-meme');
+    });
 });
 
 server.get('/about-page', function(req, resp){
