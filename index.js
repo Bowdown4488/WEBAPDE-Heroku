@@ -147,7 +147,12 @@ server.get('/main-page', urlencoder,function(req, resp){
 });
 
 server.get('/main-postLogin', urlencoder,function(req, resp){
-   resp.render('./pages/main-postLogin');
+   // resp.render('./pages/main-postLogin');
+   		  const searchUser = { username: req.session.username};
+          userModel.findOne(searchUser, function (err, foundUser) {
+          	 console.log("Object: " + foundUser);
+              resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image});
+        });
 });
 
 server.get('/logout', function(req, resp){
