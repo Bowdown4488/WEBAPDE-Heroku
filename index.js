@@ -263,6 +263,18 @@ server.post('/user-profile', function(req, resp){
 //      resp.render('./pages/home',{ data:data });
 //    });
 
+server.get('/user-memes', function(req, resp){
+//    viewMeme(function(){ 
+//          resp.render('./pages/user-memes');
+//    });
+    const searchMeme = { memeOwner: req.session.username};
+    memeModel.findOne(searchMeme, function (err, foundMeme) {
+    console.log("Object: " + foundMeme);
+        resp.render('./pages/user-memes',{memeimage: foundMeme.memeimage});
+        });
+   
+});
+
 server.get('/main-postLogin', function(req, resp){
    resp.render('./pages/main-postLogin');
 });

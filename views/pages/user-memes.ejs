@@ -61,28 +61,16 @@
          <button type="submit" class="btn btn-default">Search</button>
         </div>
         <a type="button" class=" btn btn-warning upload" href="/upload-meme">Upload Meme</a>
-         <a type="button" class=" btn btn-warning upload" href="/user-memes">MY MEMEZ</a> 
         </form>
     </div>
   </div>
 </nav>
-
-<div class="jumbotron">
-  <div class="container text-center">
-    <div class="container text-center">
-    <h3>WELCOME!!!! <%=username%></h3>
-    <img src="/new/<%=image%>" class="img-circle" alt="profile pic" width="350" height="350">
-  </div>   
-    <p>"<%=userBio%>"</p>
-  </div>
-</div>
-  
-<!--
+   
 <div class="container-fluid bg-3 text-center">    
   <h3>Recent memes</h3><br>
   <div class="row">
     <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
+      <img src="/memes/<%=memeimage%>" class="img-responsive" style="width:100%" alt="Image">
     </div>
     <div class="col-sm-3"> 
       <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
@@ -112,7 +100,6 @@
     </div>
   </div>
 </div><br><br>
--->
 
 <footer class="container-fluid text-center">
   <p>Footer Text</p>
