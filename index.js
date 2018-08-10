@@ -243,6 +243,10 @@ server.post('/user-profile', function(req, resp){
                 memePrivacy: fields.memePrivacy
             })
             foundUser.meme.push(newmeme);
+              foundUser.save(function (err, inv) {
+                if(err) return console.error(err);
+                callback();
+                });
 //            viewUsers(function(list){
 //            const data = { list:list };
             resp.render('./pages/user-profile',{username: req.session.username, image: foundUser.image, userBio: foundUser.userBio});//, data:data
