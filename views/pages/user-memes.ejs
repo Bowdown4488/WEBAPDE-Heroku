@@ -68,16 +68,12 @@
 
 <div class="container-fluid bg-3 text-center">    
   <h3>Recent memes</h3><br>
-    <div class="col-sm-4">
+    <div class="col-sm-4 text-left">
       <% for(var i=0;i<data.list.length;i++){ %>
-      <div class = "memecontainer"><img src="/memes/<%= data.list[i].memeimage %>" class="img-responsive" style="width:100%" alt="Image"></div>
-    </div><br>
+      <div class = "memecontainer"><img src="/memes/<%= data.list[i].memeimage %>" class="img-responsive " width = "400" height = "300" alt="Image"></div><br>
+    </div>
       <% } %>    
 </div>
-
-<footer class="container-fluid text-center">
-  <p>Footer Text</p>
-</footer>
 
 </body>
 </html>
