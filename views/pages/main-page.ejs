@@ -234,6 +234,7 @@ $(document).ready(function(){
   <div class="row">
   	<div class="container">
   	<div class="panel-group">
+<!--
   	<div class="col-sm-4 text-left">
         <div class="panel panel-default">
           <div class="panel-heading"><h1 class="lead"><strong>Ichigo means strawberry in Japanese</strong></h1></div>
@@ -249,22 +250,34 @@ $(document).ready(function(){
               <a href="/view-meme" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
           </div>
         </div>
-    </div>   
-     <div class="col-sm-4 text-left">       
+    </div>        
+-->
+  	<div class="col-sm-2 text-left">
+    </div>       
+        
+  	<div class="col-sm-6 text-left">
+        <% for(var i=0;i<data.list.length;i++){ %>
         <div class="panel panel-default">
-            <div class="panel-heading"><h1 class="lead"><strong>Quality Pinoy Memes</strong></h1></div>
+          <div class="panel-heading"><h1 class="lead"><strong><%= data.list[i].memeTag %></strong></h1></div>
           <div class="panel-body">
             <div class="memeframe">
-                <div class="memecontainer materialboxed"><img src="./pinoy.jpg" class="meme"></div>
-            <p>Posted by : Admin</p>
-            <span> <button type="button" class="btn-link">Pinoy</button> <button type="button" class="btn-link">Golden</button>
-            <button type="button" class="btn-link">Advance mag isip</button> <button type="button" class="btn-link">Wala na Finish na Talaga</button>
-                </span>
+            <div class="memecontainer materialboxed"><img src="/memes/<%= data.list[i].memeimage %>"  class="meme"></div>
+            <p></p>
+            <a href="/user-profile"> Posted by : <%= data.list[i].memeOwner %> </a> <br>
+            <span><button type="button" class="btn-link"><%= data.list[i].memeTag %></button> 
+<!--
+            <button type="button" class="btn-link">Ichigo</button>
+            <button type="button" class="btn-link">Anime</button> <button type="button" class="btn-link">02</button>
+            <button type="button" class="btn-link">Ichigo</button> 
+-->
+            </span>
             </div>
-              <a href="/view-meme2" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
+              <a href="/view-meme" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
           </div>
         </div>
+        <% } %> 
     </div>
+<!--
     <div class="col-sm-4 text-left">
         <div class="panel panel-default">
           <div class="panel-heading"><h1 class="lead"><strong>Cute Puppy</strong></h1></div>
@@ -280,206 +293,11 @@ $(document).ready(function(){
           </div>
         </div>
     </div> 
+-->
         
     </div>  
   	</div>
   </div>
-  
-  	<div class="row">
-  	<div class="container">
-  	<div class="panel-group">
-  		<div class="col-sm-4 text-left">
-  		<div class="panel panel-default">
-          <div class="panel-heading"><h1 class="lead"><strong>When she ain't loyal</strong></h1></div>
-          <div class="panel-body">
-            <div class="memeframe">
-                <div class="memecontainer materialboxed"><img src="./thot alarm.jpg" class="meme"> </div>
-                <p> Tags:</p>
-                <span><button type="button" class="btn-link">Thot</button> <button type="button" class="btn-link">Sad</button>
-                <button type="button" class="btn-link">Family Guy</button> <button type="button" class="btn-link">Bird is the Word</button>
-                </span>
-            </div>
-              <a href="/view-meme4" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
-          </div>
-        </div>
-    	</div>
-      <div class="col-sm-4 text-left">
-      <div class="panel panel-default">
-          <div class="panel-heading"><h1 class="lead"><strong>R.I.P</strong></h1></div>
-          <div class="panel-body">
-            <div class="memeframe">
-                <div class="memecontainer materialboxed"><img src="./itscominghome.jpg" class="meme"></div>
-                <p> Posted by : Admin</p>
-                <span><button type="button" class="btn-link">RIP</button> <button type="button" class="btn-link">Truth</button>
-                <button type="button" class="btn-link">Croatia</button> <button type="button" class="btn-link">WorldCup</button>
-                </span>
-            </div>
-              <a href="/view-meme5" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4 text-left">
-      <div class="panel panel-default">
-          <div class="panel-heading"><h1 class="lead"><strong>College got me like</strong></h1></div>
-          <div class="panel-body">
-            <div class="memeframe">
-                <div class="memecontainer materialboxed"><img src="./dissolve.png" class="meme"></div>
-                <p> Posted by : Admin</p>
-                <span><button type="button" class="btn-link">Dissolve</button> <button type="button" class="btn-link">College</button>
-                </span>
-            </div>
-              <a href="/view-meme6" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
-          </div>
-        </div>
-      </div>
-  	</div>
-  	</div>
-  	</div>
-    <div class="row">
-    <div class="container">
-    <div class="panel-group">
-      <div class="col-sm-4 text-left">
-      <div class="panel panel-default">
-          <div class="panel-heading"><h1 class="lead"><strong>middle korea best korea</strong></h1></div>
-          <div class="panel-body">
-            <div class="memeframe">
-                <div class="memecontainer materialboxed"><img src="./northkorea.jpg" class="meme"></div>
-                <p> Posted by : Admin</p>
-                <span><button type="button" class="btn-link">Anime</button> <button type="button" class="btn-link">Traps are not GAY</button>
-                </span>
-            </div>
-              <a href="/view-meme7" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4 text-left">
-      <div class="panel panel-default">
-          <div class="panel-heading"><h1 class="lead"><strong>*Lenny Face*</strong></h1></div>
-          <div class="panel-body">
-            <div class="memeframe">
-                <div class="memecontainer materialboxed"><img src="./lenny.png" class="meme"></div>
-                <p> Posted by : Admin</p>
-                <span><button type="button" class="btn-link">Lenny Face</button> <button type="button" class="btn-link">XD</button>
-                <button type="button" class="btn-link">( ͡° ͜ʖ ͡°)</button> 
-                </span>
-                </div>
-              <a href="/view-meme8" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4 text-left">
-      <div class="panel panel-default">
-          <div class="panel-heading"><h1 class="lead"><strong>Politerino</strong></h1></div>
-          <div class="panel-body">
-            <div class="memeframe">
-                <div class="memecontainer materialboxed"><img src="./politecat.jpg" class="meme"></div>
-                <p> Posted by : Admin</p>
-                <span><button type="button" class="btn-link">CAT</button>
-                </span>
-                </div>
-              <a href="/view-meme9" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-    </div>
-    <div class="row">
-    <div class="container">
-    <div class="panel-group">
-      <div class="col-sm-4 text-left">
-      <div class="panel panel-default">
-          <div class="panel-heading"><h1 class="lead"><strong>save the turtles thanks</strong></h1></div>
-          <div class="panel-body">
-            <div class="memeframe">
-                <div class="memecontainer materialboxed"><img src="./seaturtles.jpg" class="meme"></div>
-                <p> Posted by : Admin</p>
-                <span><button type="button" class="btn-link">Save Earth chan</button> <button type="button" class="btn-link">Turtles</button>
-                </span>
-                </div>
-                <a href="/view-meme10" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
-            </div>
-          </div>
-        </div>
-      <div class="col-sm-4 text-left">
-      <div class="panel panel-default">
-          <div class="panel-heading"><h1 class="lead"><strong>YES</strong></h1></div>
-          <div class="panel-body">
-            <div class="memeframe">
-                <div class="memecontainer materialboxed"><img src="./memesnow.png" class="meme"></div>
-                <p> Posted by : Admin</p>
-                <span><button type="button" class="btn-link">Yes</button> <button type="button" class="btn-link">The Future</button>
-                </span>
-                </div>
-                <a href="/view-meme11" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
-            </div>
-          </div>
-      </div>
-      <div class="col-sm-4 text-left">
-      <div class="panel panel-default">
-          <div class="panel-heading"><h1 class="lead"><strong>Grossly Incandescent</strong></h1></div>
-          <div class="panel-body">
-            <div class="memeframe">
-                <div class="memecontainer materialboxed"><img src="./tpose.jpg" class="meme"></div>
-                <p> Posted by : Admin</p>
-                <span><button type="button" class="btn-link">Facts</button>
-                </span>
-                </div>
-              <a href="/view-meme12" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-    </div>
-    <div class="row">
-    <div class="container">
-    <div class="panel-group">
-      <div class="col-sm-4 text-left">
-      <div class="panel panel-default">
-          <div class="panel-heading"><h1 class="lead"><strong>BBBBBBBBBBBBBBB</strong></h1></div>
-          <div class="panel-body">
-            <div class="memeframe">
-                <div class="memecontainer materialboxed"><img src="./stolen.png" class="meme"></div>
-                <p> Posted by : Admin</p>
-                <span><button type="button" class="btn-link">Dank</button>
-                </span>
-                </div>
-            <a href="/view-meme13" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4 text-left">
-      <div class="panel panel-default">
-          <div class="panel-heading"><h1 class="lead"><strong>...obama?</strong></h1></div>
-          <div class="panel-body">
-            <div class="memeframe">
-                <div class="memecontainer materialboxed"><img src="./obama.jpg" class="meme"></div>
-                <p> Posted by : Admin</p>
-                <span><button type="button" class="btn-link">Obama</button> <button type="button" class="btn-link">Reeeeeee</button>
-                </span>
-                </div>
-              <a href="/view-meme14" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4 text-left">
-      <div class="panel panel-default">
-          <div class="panel-heading"><h1 class="lead"><strong>PH right now</strong></h1></div>
-          <div class="panel-body">
-            <div class="memeframe">
-                <div class="memecontainer materialboxed"><img src="./deadmayor.jpg" class="meme"></div>
-                <p> Posted by : Admin</p>
-                <span><button type="button" class="btn-link">Suspended</button> <button type="button" class="btn-link">Dark Humor</button>
-                </span>
-                </div>
-            <a href="/view-meme15" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-    </div>
   	<div class="container-fluid" style="float: right;">
   	<table>
   		<tr>

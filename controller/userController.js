@@ -71,7 +71,10 @@ server.get('/', urlencoder,function(req, resp){
         })
     }       
     else{
-        resp.render('./pages/main-page');
+    memeModel.viewMeme(function(list){
+      const data = { list:list };
+      resp.render('./pages/main-page',{data: data});
+    });
   }
 });
 
