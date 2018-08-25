@@ -7,6 +7,7 @@ const session = require('express-session');
 const cookieparser = require('cookie-parser');
 const path = require('path')
 const fs = require('fs');//used for file upload
+const cool = require("cool-ascii-faces");
 function userModule(server){
     
 server.use(session({
@@ -65,7 +66,7 @@ server.get('/', urlencoder,function(req, resp){
             if(err) return console.error(err);
             if(foundUser != undefined && foundUser.username != null){
                 req.session.username = foundUser.username;
-                resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image});
+                resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image, faces: cool()});
             }
         })
     }       
@@ -82,7 +83,7 @@ server.get('/main-postLogin', urlencoder,function(req, resp){
         var findUser = userModel.findOne(req.session.username)
         findUser.then((foundUser)=>
         {
-           resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image}); 
+           resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image,faces: cool()}); 
         })   
 });
 
@@ -97,7 +98,7 @@ server.post('/main-postLogin', urlencoder,function(req, resp){
         var findUser = userModel.findOne(req.session.username)
         findUser.then((foundUser)=>
         {
-           resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image}); 
+           resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image, faces: cool()}); 
         })       
     }
     else{
@@ -113,7 +114,7 @@ server.post('/main-postLogin', urlencoder,function(req, resp){
            console.log("DB: " + foundUser.password);
           if(hashedcheck === foundUser.password){
               req.session.username = foundUser.username;
-              resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image});
+              resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image, faces: cool()});
           }
       }else
         resp.render('./pages/main-page');
