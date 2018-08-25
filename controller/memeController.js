@@ -16,13 +16,16 @@ server.get('/upload-meme', function(req, resp){
 });
     
 server.get('/user-memes', function(req, resp){
-//    const searchMeme = { memeOwner: req.session.username};
     var findMeme = memeModel.findOwner(req.session.username);
     findMeme.then((foundMeme)=>
     {
-        console.log(foundMeme);
-        console.log("Object: " + foundMeme);
-        resp.render('./pages/user-memes',{memeimage: foundMeme.memeimage});
+        
+    memeModel.viewMeme(function(list){
+      const data = { list:list };
+      console.log(foundMeme);
+      console.log("Object: " + foundMeme);
+      resp.render('./pages/user-memes',{data: data});
+    });
     })
 });
 

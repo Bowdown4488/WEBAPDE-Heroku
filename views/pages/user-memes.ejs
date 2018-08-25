@@ -65,41 +65,15 @@
     </div>
   </div>
 </nav>
-   
-<div class="container-fluid bg-3 text-center">    
-  <h3>Recent memes</h3><br>
-  <div class="row">
-    <div class="col-sm-3">
-      <img src="/memes/<%=memeimage%>" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-  </div>
-</div><br>
 
 <div class="container-fluid bg-3 text-center">    
-  <div class="row">
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-    </div>
-  </div>
-</div><br><br>
+  <h3>Recent memes</h3><br>
+    <div class="col-sm-4">
+      <% for(var i=0;i<data.list.length;i++){ %>
+      <div class = "memecontainer"><img src="/memes/<%= data.list[i].memeimage %>" class="img-responsive" style="width:100%" alt="Image"></div>
+    </div><br>
+      <% } %>    
+</div>
 
 <footer class="container-fluid text-center">
   <p>Footer Text</p>
