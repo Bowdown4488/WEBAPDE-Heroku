@@ -24,9 +24,6 @@ const urlencoder = bodyparser.urlencoded({
     extended: false
 });
 
-server.get('/about', function(req,resp){
-      resp.render('./pages/about',{username:req.session.username});
-  });
     
 server.get('/about-page', function(req, resp){
    resp.render('./pages/about-page');
@@ -79,7 +76,10 @@ server.get('/', urlencoder,function(req, resp){
 });
 
 server.get('/main-page', urlencoder,function(req, resp){
-   resp.render('./pages/main-page');
+       memeModel.viewMeme(function(list){
+      const data = { list:list };
+      resp.render('./pages/main-page',{data: data});
+    });
 });
 
 server.get('/main-postLogin', urlencoder,function(req, resp){
@@ -120,7 +120,10 @@ server.post('/main-postLogin', urlencoder,function(req, resp){
               resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image, faces: cool()});
           }
       }else
-        resp.render('./pages/main-page');
+    memeModel.viewMeme(function(list){
+      const data = { list:list };
+      resp.render('./pages/main-page',{data: data});
+    });
     })
   } 
 });
@@ -139,7 +142,10 @@ server.post('/main-page', function(req, resp){
         console.log('Saving files to new folder');
         if (err) throw err;
         userModel.addUser(fields.username, hashedpassword ,files.image.name, fields.email , fields.userBio ,function(){ 
-          resp.render('./pages/main-page');
+        memeModel.viewMeme(function(list){
+            const data = { list:list };
+            resp.render('./pages/main-page',{data: data});
+        });
         });//adduser to DB
       });
     });
