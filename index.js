@@ -26,7 +26,7 @@ const urlencoder = bodyparser.urlencoded({
 
 server.set('view engine', 'ejs');
 server.use(express.static(__dirname + '/public'));
-//server.set('views', path.join(__dirname, 'views'));
+server.set('views', path.join(__dirname, 'views'));
 
 //database models
 
@@ -243,10 +243,10 @@ server.post('/user-profile', function(req, resp){
                 memePrivacy: fields.memePrivacy
             })
             foundUser.meme.push(newmeme);
-              foundUser.save(function (err, inv) {
+            foundUser.save(function (err, inv) {  //saves the user 
                 if(err) return console.error(err);
-                callback();
-                });
+                    callback();
+            });
 //            viewUsers(function(list){
 //            const data = { list:list };
             resp.render('./pages/user-profile',{username: req.session.username, image: foundUser.image, userBio: foundUser.userBio});//, data:data
@@ -272,9 +272,13 @@ server.get('/user-memes', function(req, resp){
 server.post('/upload-meme', urlencoder,function(req, resp){
     const searchMeme = { memeTitle: req.body.memeTitle};
     memeModel.deleteOne(searchMeme, function (err, foundMeme) {
-        console.log("Deleted Object: " + foundMeme);
-        console.log("Deleted Object");
-        resp.render('./pages/upload-meme');
+//    userModel.deleteOne(searchMeme, function (err, userMeme){  //trying to delete the meme in the user schema          
+//    });
+//    const id = {_id};
+//    memeModel.findOne(_id,funtion(err,foundId){});    
+    console.log("Deleted Object: " + foundMeme);
+    console.log("Deleted Object");
+    resp.render('./pages/upload-meme');
     });
 });
 
