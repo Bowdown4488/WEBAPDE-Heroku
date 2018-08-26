@@ -195,6 +195,33 @@ $(document).ready(function(){
   <div class="row">
   	<div class="container">
   	<div class="panel-group">
+        
+    <div class="col-sm-2 text-left">
+    </div>       
+        
+  	<div class="col-sm-6 text-left">
+        <% for(var i=0;i<data.list.length;i++){ %>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h1 class="lead"><strong><%= data.list[i].memeTitle %></strong></h1></div>
+          <div class="panel-body">
+            <div class="memeframe">
+            <div class="memecontainer materialboxed"><img src="/memes/<%= data.list[i].memeimage %>"  class="meme"></div>
+            <p></p>
+            <a href="/user-profile"> Posted by : <%= data.list[i].memeOwner %> </a> <br>
+            <span><button type="button" class="btn-link"><%= data.list[i].memeTag %></button> 
+<!--
+            <button type="button" class="btn-link">Ichigo</button>
+            <button type="button" class="btn-link">Anime</button> <button type="button" class="btn-link">02</button>
+            <button type="button" class="btn-link">Ichigo</button> 
+-->
+            </span>
+            </div>
+              <a href="/view-meme" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
+          </div>
+        </div>
+        <% } %> 
+    </div>
+<!--
   	<div class="col-sm-4 text-left">
         <div class="panel panel-default">
           <div class="panel-heading"><h1 class="lead"><strong>Ichigo means strawberry in Japanese</strong></h1></div>
@@ -241,6 +268,7 @@ $(document).ready(function(){
           </div>
         </div>
     </div> 
+-->
         
     </div>  
   	</div>

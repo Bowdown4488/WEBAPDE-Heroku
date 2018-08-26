@@ -104,12 +104,12 @@
 <div class="col-sm-6 text-left">
       <div class="panel panel-default" style="height: 500px; width: 700px; background-color: antiquewhite;">
           <div class="panel-heading" style="background-color: #404040; color: white">
-            <span><h1 class="head"><strong>Ichigo means strawberry in Japanese</strong></h1></span>
+            <span><h1 class="head"><strong><%=memeTitle%></strong></h1></span>
             
           </div>
           <div class="panel-body">
             <div class="memeframe">
-                <div class="memecontainer"><img src="./ichigo.jpg" class="meme"></div>
+                <div class="memecontainer"><img src="/meme/<%=memeImage%>" class="meme"></div>
             </div>
               
           </div>
@@ -118,24 +118,25 @@
               <tr>
                 <td>
                   <div class="container" style=" width: 350px; margin-left: 0px;">
-                  <small><p> Posted by : <strong>Admin</strong></p></small>
+                  <small><p> Posted by : <strong><%=memeOwner%></strong></p></small>
                   <div>
                     <label>Tags: </label>
-                    <span><input type="checkbox" name=""/></span>
-                    <button type="button" class="btn-link" style="color: yellow;">Ichigo</button>
-                    <span><input type="checkbox" name=""/></span>
-                    <button type="button" class="btn-link" style="color: yellow;">Reeeeeee</button>
+<!--                    <span><input type="checkbox" name=""/></span>-->
+                    <button type="button" class="btn-link" style="color: yellow;"><%=memeTag%></button>
+<!--                    <span><input type="checkbox" name=""/></span>-->
                   </div>
+<!--
                   <span style="color: black;"><input type="button" class="btn btn-default" name="Delete" value="Delete Selected"></span>
                   <br>
                   <span><input type="text" name=""></span>
                   <span style="color: black;"><input type="button" class="btn btn-default" name="Add" value="Add Tag"></span>
-                
+-->
+                  
                   </div>
                 </td>
                 <td>
                   <label> Comments:</label>
-                  <span class="text-center">In the year 2420, Obama has decided to evolve into a new and improved human specimen. One with incomprehensible greatness.</span>
+<!--                  <span class="text-center">In the year 2420, Obama has decided to evolve into a new and improved human specimen. One with incomprehensible greatness.</span>-->
                 </td>
               </tr>
             </table>

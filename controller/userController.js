@@ -41,17 +41,13 @@ server.get('/meme-tagsDefault', function(req, resp){
    resp.render('./pages/meme-tagsDefault');
 }); 
     
-server.get('/view-meme', function(req, resp){
-   resp.render('./pages/view-meme');
-});
-
-server.get('/view-meme2', function(req, resp){
-   resp.render('./pages/view-meme2');
-});
-
-server.get('/view-meme3', function(req, resp){
-   resp.render('./pages/view-meme3');
-});
+//server.get('/view-meme2', function(req, resp){
+//   resp.render('./pages/view-meme2');
+//});
+//
+//server.get('/view-meme3', function(req, resp){
+//   resp.render('./pages/view-meme3');
+//});
     
 
 server.get('/', urlencoder,function(req, resp){
@@ -63,7 +59,10 @@ server.get('/', urlencoder,function(req, resp){
             if(err) return console.error(err);
             if(foundUser != undefined && foundUser.username != null){
                 req.session.username = foundUser.username;
-                resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image, faces: cool()});
+                memeModel.viewMeme(function(list){
+                const data = { list:list };
+                resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image, faces: cool(),data: data}); 
+             });
             }
         })
     }       
@@ -76,7 +75,7 @@ server.get('/', urlencoder,function(req, resp){
 });
 
 server.get('/main-page', urlencoder,function(req, resp){
-       memeModel.viewMeme(function(list){
+    memeModel.viewMeme(function(list){
       const data = { list:list };
       resp.render('./pages/main-page',{data: data});
     });
@@ -86,7 +85,10 @@ server.get('/main-postLogin', urlencoder,function(req, resp){
         var findUser = userModel.findOne(req.session.username)
         findUser.then((foundUser)=>
         {
-           resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image,faces: cool()}); 
+            memeModel.viewMeme(function(list){
+                const data = { list:list };
+                resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image, faces: cool(),data: data}); 
+             });
         })   
 });
 
@@ -101,7 +103,10 @@ server.post('/main-postLogin', urlencoder,function(req, resp){
         var findUser = userModel.findOne(req.session.username)
         findUser.then((foundUser)=>
         {
-           resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image, faces: cool()}); 
+            memeModel.viewMeme(function(list){
+                const data = { list:list };
+                resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image, faces: cool(),data: data}); 
+             });
         })       
     }
     else{
@@ -117,7 +122,10 @@ server.post('/main-postLogin', urlencoder,function(req, resp){
            console.log("DB: " + foundUser.password);
           if(hashedcheck === foundUser.password){
               req.session.username = foundUser.username;
-              resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image, faces: cool()});
+             memeModel.viewMeme(function(list){
+                const data = { list:list };
+                resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image, faces: cool(),data: data}); 
+             });
           }
       }else
     memeModel.viewMeme(function(list){

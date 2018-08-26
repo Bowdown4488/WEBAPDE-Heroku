@@ -47,10 +47,11 @@ function addMeme(memeTitle, memeimage, memeTag, memeOwner, memePrivacy, callback
    return memeModel.findOne({memeOwner: memeOwner});
 }
 
- function findMemes(memeOwner){
-   return memeModel.find({memeOwner: memeOwner});
+ function findMemes(memeTitle){
+   return memeModel.findOne({memeTitle: memeTitle});
 }
 
 module.exports.addMeme = addMeme;
 module.exports.findOwner = findOwner;
 module.exports.viewMeme = viewMeme;
+module.exports.findMemes = findMemes;

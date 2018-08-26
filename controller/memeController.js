@@ -82,6 +82,17 @@ server.post('/upload-meme', urlencoder,function(req, resp){
     });
 });
     
+server.get('/view-meme',urlencoder, function(req, resp){
+    console.log("Title: " + req.body.memeTitle)
+    var findMeme = memeModel.findOwner(req.body.memeTitle);
+    findMeme.then((foundMeme)=>
+    {
+        console.log("Meme Found: " + foundMeme);
+        resp.render('./pages/view-meme',{memeTitle: foundMeme.memeTitle, memeImage: foundMeme.memeImage, memeTag: foundMeme.memeTag, memeOwner: foundMeme.memeOwner});
+    })
+   
+});
+    
 }
     
 module.exports.Activate = memeModule;
