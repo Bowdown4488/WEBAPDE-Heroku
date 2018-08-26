@@ -8,7 +8,11 @@ const cookieparser = require('cookie-parser');
 const path = require('path')
 const fs = require('fs');//used for file upload
 const cool = require("cool-ascii-faces");
+const expressSanitizer = require('express-sanitizer')
+
 function userModule(server){
+
+server.use(expressSanitizer());    
     
 server.use(session({
   name: 'User Session',

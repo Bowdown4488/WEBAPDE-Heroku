@@ -4,9 +4,6 @@ const memeSchema = mongoose.Schema({
     //memeID: String,
 	memeTitle: String,
     memeimage: { type: String },
-//	memeTag: [{
-//    tag:String
-//    }],
     memeTag: String,
 	memeOwner: String,
 //	memeDate: String,
@@ -45,7 +42,7 @@ function viewMeme(callback){
 
 function addMeme(memeTitle, memeimage, memeTag, memeOwner, memePrivacy, callback){
   const instance = memeModel({ memeTitle: memeTitle, memeimage: memeimage, memeTag: memeTag, memeOwner: memeOwner, memePrivacy: memePrivacy });
-   console.log("test");
+   console.log("Adding meme" + {memeTag: memeTag});
   instance.save(function (err, inv) {
     if(err) return console.error(err);
     callback();
@@ -60,9 +57,9 @@ function addMeme(memeTitle, memeimage, memeTag, memeOwner, memePrivacy, callback
    return memeModel.findOne({memeTitle: memeTitle});
 }
 
- function viewMyMeme(memeTitle, callback){
-    console.log("Title: "+ memeTitle);
-   memeModel.find({memeTitle: memeTitle}).then((list)=>
+ function viewMyMeme(memeOwner, callback){
+    console.log("Title: "+ memeOwner);
+   memeModel.find({memeOwner: memeOwner}).then((list)=>
    {
         console.log("List: " + list);
        callback(list);

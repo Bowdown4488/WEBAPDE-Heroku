@@ -28,7 +28,8 @@ server.get('/user-memes', function(req, resp){
 //            const data = {foundMyMeme: foundMyMeme};      
 //            resp.render('./pages/user-memes',{data: data});
 //        })   
-                var find = foundMeme.memeTitle;
+                var find = foundMeme.memeOwner;
+                console.log(find)
                 memeModel.viewMyMeme(find, function(list){
                   const data = { list:list };
                   console.log(data);
@@ -59,6 +60,7 @@ server.post('/user-profile', function(req, resp){
             var cleanTag = req.sanitize(fields.memeTag);
             var cleanPrivacy = req.sanitize(fields.memePrivacy);
             memeModel.addMeme(cleanTitle, cleanImage, cleanTag ,foundUser.username , cleanPrivacy ,function(){ 
+            console.log("Pushed Meme");
             console.log(cleanTitle);
             console.log(cleanImage);
             console.log(cleanTag );
