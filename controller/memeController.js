@@ -18,14 +18,26 @@ server.get('/upload-meme', function(req, resp){
 server.get('/user-memes', function(req, resp){
     var findMeme = memeModel.findOwner(req.session.username);
     findMeme.then((foundMeme)=>
-    {
-        
-    memeModel.viewMeme(function(list){
-      const data = { list:list };
-      console.log(foundMeme);
-      console.log("Object: " + foundMeme);
-      resp.render('./pages/user-memes',{data: data});
-    });
+    {  
+        if(foundMeme !== null){
+              console.log("Found MEME:" + foundMeme);
+//            var findMyMeme = memeModel.viewMyMeme(foundMeme.memeOwner);
+//            findMyMeme.then((foundMyMeme)=>{
+//            const data = {foundMyMeme: foundMyMeme};      
+//            resp.render('./pages/user-memes',{data: data});
+//        })   
+                var find = foundMeme.memeTitle;
+                memeModel.viewMyMeme(find, function(list){
+                  const data = { list:list };
+                  console.log(data);
+                  console.log("User MEME found: " + data);
+                  resp.render('./pages/user-memes',{data: data});
+                })
+
+        }
+        else{
+            resp.render('./pages/upload-meme');
+        }
     })
 });
 

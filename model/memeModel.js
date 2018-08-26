@@ -34,6 +34,15 @@ function viewMeme(callback){
   });
 }
 
+//function viewMyMeme(find, callback){
+////  console.log(memeTitle);
+//  memeModel.find({memeTitle: {$regex: find, $options: 'i'}}, function (err, list) {
+//    console.log(find);
+//    if(err) return console.error(err);
+//    callback(list);
+//  });
+//}
+
 function addMeme(memeTitle, memeimage, memeTag, memeOwner, memePrivacy, callback){
   const instance = memeModel({ memeTitle: memeTitle, memeimage: memeimage, memeTag: memeTag, memeOwner: memeOwner, memePrivacy: memePrivacy });
    console.log("test");
@@ -51,7 +60,17 @@ function addMeme(memeTitle, memeimage, memeTag, memeOwner, memePrivacy, callback
    return memeModel.findOne({memeTitle: memeTitle});
 }
 
+ function viewMyMeme(memeTitle, callback){
+    console.log("Title: "+ memeTitle);
+   memeModel.find({memeTitle: memeTitle}).then((list)=>
+   {
+        console.log("List: " + list);
+       callback(list);
+   });
+}   
+
 module.exports.addMeme = addMeme;
 module.exports.findOwner = findOwner;
 module.exports.viewMeme = viewMeme;
 module.exports.findMemes = findMemes;
+module.exports.viewMyMeme = viewMyMeme;
