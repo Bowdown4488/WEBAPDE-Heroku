@@ -149,7 +149,12 @@ server.post('/main-page', function(req, resp){
       fs.rename(oldpath, newpath, function (err) {
         console.log('Saving files to new folder');
         if (err) throw err;
-        userModel.addUser(fields.username, hashedpassword ,files.image.name, fields.email , fields.userBio ,function(){ 
+        var cleanUser = req.sanitize(fields.username);
+        var cleanPass = req.sanitize(hashedpassword);
+        var cleanImage = req.sanitize(files.image.name);
+        var cleanEmail = req.sanitize(fields.email);
+        var cleanBio = req.sanitize(fields.userBio);
+        userModel.addUser(cleanUser, cleanPass , cleanImage, cleanEmail , cleanBio ,function(){ 
         memeModel.viewMeme(function(list){
             const data = { list:list };
             resp.render('./pages/main-page',{data: data});

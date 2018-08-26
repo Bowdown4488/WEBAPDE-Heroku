@@ -30,6 +30,22 @@
       color: white;
       padding-top: 70px;
     }
+
+    .package-list {
+      list-style-position: outside;
+      padding: 20px 50px;
+      margin-left: 130px;
+      display: block;
+      
+    }
+
+    .package-item {
+      font-size: 18px;
+    }
+
+    .package-desc {
+      
+    }
   </style>
 </head>
 <body>
@@ -55,8 +71,38 @@
     <div class="container text-center">
     <img src="./allmight.gif" class="img" alt="profile pic" height="250">
   </div>   
-    <p class="lead">About Us</p>
+    <p class="lead" style="font-size: 30px;">About Us</p>
     <p>This website is made by DLSU 116 computer science students for WEBAPDE. It's formatting and design took inspiration from Imgur and 9gag. It is a site for each and every kind of meme-r. BE DANK AND ENJOY!</p>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+    <div class="col-sm-6 text-left" style="border-right: solid;">
+      <p style="margin-left: 130px;">NPM Packages
+      <ol class="package-list">
+        <li class="package-item">express</li>
+        <li class="package-item">body-parser</li>
+        <li class="package-item">express-session</li>
+        <li class="package-item">mongoose</li>
+        <li class="package-item">formidable</li>
+        <li class="package-item">fs</li>
+        <li class="package-item">crypto</li>
+        <li class="package-item">cool-ascii-faces</li> 
+        <li class="package-item">express-sanitize</li>
+          <dd class="package-desc">-To check for cross-site scripting</dd>
+         
+      </ol>
+      </p>
+    </div>
+
+    <div class="col-sm-6 text-left">
+      <p style="margin-left: 130px;">Third-Party Libraries
+      <ol class="package-list">
+        <li class="package-item">Bootstrap</li>
+          <dd class="package-desc">-For the general layout templates</dd>
+        <li class="package-item">Materialize</li>
+          <dd class="package-desc">-For enlarging memes in main page</dd>
+      </ol>
+      </p>
+    </div>
   </div>
 </div>
 

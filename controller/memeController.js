@@ -4,8 +4,10 @@ const formidable = require('formidable');
 const bodyparser = require('body-parser')
 const path = require('path')
 const fs = require('fs');//used for file upload
+const expressSanitizer = require('express-sanitizer');
 
 function memeModule(server){
+server.use(expressSanitizer());
 
 const urlencoder = bodyparser.urlencoded({
     extended: false
@@ -52,18 +54,22 @@ server.post('/user-profile', function(req, resp){
         if (err) throw err;
             var findUser = userModel.findOne(req.session.username)
             findUser.then((foundUser)=> {
-            memeModel.addMeme(fields.memeTitle,files.memeimage.name, fields.memeTag ,foundUser.username , fields.memePrivacy ,function(){ 
-            console.log(fields.memeTitle);
-            console.log(files.memeimage.name);
-            console.log(fields.memeTag );
+            var cleanTitle = req.sanitize(fields.memeTitle);
+            var cleanImage = req.sanitize(files.memeimage.name);
+            var cleanTag = req.sanitize(fields.memeTag);
+            var cleanPrivacy = req.sanitize(fields.memePrivacy);
+            memeModel.addMeme(cleanTitle, cleanImage, cleanTag ,foundUser.username , cleanPrivacy ,function(){ 
+            console.log(cleanTitle);
+            console.log(cleanImage);
+            console.log(cleanTag );
             console.log(foundUser.username );
-            console.log(fields.memePrivacy);
+            console.log(cleanPrivacy);
             //console.log("Object: " + foundUser);
             var newmeme = {
-                memeTitle: fields.memeTitle,
-                memeimage:files.memeimage.name,
-                memeTag: fields.memeTag,
-                memePrivacy: fields.memePrivacy
+                memeTitle: cleanTitle,
+                memeimage: cleanImage,
+                memeTag: cleanTag,
+                memePrivacy: cleanPrivacy
             }
             foundUser.meme.push(newmeme);
             foundUser.save().then((foundUser)=>

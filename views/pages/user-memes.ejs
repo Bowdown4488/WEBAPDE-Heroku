@@ -37,6 +37,10 @@
       color: white;
       padding-top: 70px;
     }
+
+    .memecontainer {
+      border: solid pink;
+    }
   </style>
 </head>
 <body>
@@ -70,7 +74,13 @@
   <h3>Recent memes</h3><br>
     <div class="col-sm-4 text-left">
       <% for(var i=0;i<data.list.length;i++){ %>
+      <% if(i%4 === 0){ %>
+      <div class="row">
       <div class = "memecontainer"><img src="/memes/<%= data.list[i].memeimage %>" class="img-responsive " width = "400" height = "300" alt="Image"></div><br>
+      </div>
+      <% } else { %>
+      <div class = "memecontainer"><img src="/memes/<%= data.list[i].memeimage %>" class="img-responsive " width = "400" height = "300" alt="Image"></div><br>
+      <% } %>
     </div>
       <% } %>    
 </div>
