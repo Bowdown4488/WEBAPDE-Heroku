@@ -137,6 +137,9 @@ server.get('/meme-tagsDefault/:tags', function(req, resp){
         })
 });
     
+server.get('/edit-meme/:title', function(req,resp){
+    
+    })  
 }
     
 module.exports.Activate = memeModule;
