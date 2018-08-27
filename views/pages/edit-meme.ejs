@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href = '/'>
   <title>Upload Meme</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,6 +54,15 @@
         padding-bottom: 20px;
         padding-top: 20px;
       }
+      
+    .meme {
+    	margin: auto;
+    	margin-left: 25%;
+    	max-height: 350px;
+      	min-height: 100%;
+      	max-width: 400px;
+      	min-width: 50%;
+    }
   </style>
 </head>
 <body>
@@ -88,27 +98,29 @@
 <div class="container">
 <div class="col-sm-4"></div>
   <div class="col-sm-4 mid">
-    <img src="https://placehold.it/150x80?text=IMAGE" class="img" alt="upload avatar" style="border: solid black;"> 
-    <form action="user-profile" method= "post" name = 'upload' enctype="multipart/form-data">
+    <h1> EDIT MEMES </h1>
+    <img src="/memes/<%=memeimage%>" class="img meme" alt="upload avatar" style="border: solid black;"> 
+    <form action="edit-meme" method= "post" name = 'upload' enctype="multipart/form-data">
         <div>
             <input type="file" name = 'memeimage' id="avatar-button">
         </div>
         <div>
             <h4>Meme Title:</h4>
-            <input type="text" name = 'memeTitle' placeholder="Enter Title">
+            <input type="text" name = 'memeTitle' placeholder="<%=memeTitle%>">
+            <input type="hidden" name= 'oldTitle' value="<%=memeTitle%>">
+            <input type="hidden" name= 'memeID' value="<%=memeID%>">
         </div>
             <h4>Select Tag/s:</h4>
              <div>
-                <textarea rows="2" cols="45" name = 'memeTag' placeholder = 'Type your tags separated by spaces'></textarea>
+                <textarea rows="2" cols="45" name = 'memeTag' placeholder = '<%=memeTag%>'></textarea>
             </div>
             
     <h4>Select Privacy:</h4>
     <span><input type="radio" name = "memePrivacy" value="Public"><label>Public</label></span>
     <span><input type="radio" name = "memePrivacy" value="Private"><label>Private</label></span>
         <h4>Share to Users: </h4>
-      <textarea class = "form-control" name ="memeShared" rows = 2 placeholder = 'Type shared people separated by spaces'></textarea>
-      <button type="submit" class="btn btn-success btn-block upload" style="margin-top: 30px; background-blue: red; border-color: red;"><span class="glyphicon glyphicon-off"></span> Upload
-    </button>
+      <textarea class = "form-control" name ="memeShared" rows = 2 placeholder = '<%=memeShared%>'></textarea>
+      <button type="submit" class="btn btn-success btn-block upload" style="margin-top: 30px; background-blue: red; border-color: red;"><span class="glyphicon glyphicon-off"></span> Upload</button>
     </form>
     </div>
     <div class="col-sm-4"> 

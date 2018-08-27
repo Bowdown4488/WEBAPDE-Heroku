@@ -107,6 +107,30 @@ server.post('/upload-meme', urlencoder,function(req, resp){
     });
 });
     
+server.post('/edit-meme', function(req,resp){
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+        var oldpath = files.memeimage.path;
+        var newpath = path.join('./','public','memes',files.memeimage.name);
+        fs.rename(oldpath, newpath, function (err) {
+            var array = fields.memeShared.split(" ");
+//          var user = req.session.username;
+//          array.push(user);//push the user to the list so that he can see his memes
+            console.log("Shared to: "+ array);
+            console.log("Start Edit");
+            memeModel.editMeme(fields.oldTitle, fields.memeTitle, fields.memeTag, files.memeimage.name, fields.memePrivacy, array);
+            userModel.editUserMeme(req.session.username, fields.memeID, fields.memeTitle, fields.memeTag, files.memeimage.name, fields.memePrivacy, array);
+                console.log("Edit Finish");
+                var findProfile = userModel.findOne(req.session.username);
+                findProfile.then((foundUser)=>
+                {
+                    console.log("Object: " + foundUser);
+                    resp.render('./pages/user-profile',{username: req.session.username, image: foundUser.image, userBio: foundUser.userBio});//, 
+                })
+            });
+        })
+    });
+    
 server.get('/meme-tagsDefault', function(req, resp){
         console.log("Tag Search fields: " + req.query.memeTag);
         var find = req.query.memeTag;
@@ -115,6 +139,46 @@ server.get('/meme-tagsDefault', function(req, resp){
             console.log(data);
             resp.render('./pages/meme-tagsDefault',{data: data,tag: req.query.memeTag});
         })
+});
+
+server.get('/meme-tags', function(req, resp){
+        console.log("Tag Search fields: " + req.query.memeTag);
+        var find = req.query.memeTag;
+        memeModel.searchMeme(find, function(list){
+            const data = { list:list };
+            console.log(data);
+            resp.render('./pages/meme-tags',{data: data,tag: req.query.memeTag});
+        })
+});
+   
+server.get('/meme-tagsDefaultMeme/:tags', function(req, resp){
+        console.log("Tag Search fields: " + req.params.tags);
+        var find = req.params.tags;
+        memeModel.searchMeme(find, function(list){
+            const data = { list:list };
+            console.log(data);
+            resp.render('./pages/meme-tagsDefault',{data: data,tag: req.params.tags});
+        })
+});
+
+server.get('/meme-tagsMeme/:tags', function(req, resp){
+        console.log("Tag Search fields: " + req.params.tags);
+        var find = req.params.tags;
+        memeModel.searchMeme(find, function(list){
+            const data = { list:list };
+            console.log(data);
+            resp.render('./pages/meme-tags',{data: data,tag: req.params.tags});
+        })
+});
+    
+server.get('/view-memeLoged/:title', function(req, resp){
+    console.log("Title passed: " + req.params.title);
+    var findMeme = memeModel.findMemes(req.params.title);
+    findMeme.then((foundMeme)=>
+    {
+        console.log("Meme Found: " + foundMeme.memeTitle);
+        resp.render('./pages/view-memeLoged',{memeTitle: foundMeme.memeTitle, memeimage: foundMeme.memeimage, memeTag: foundMeme.memeTag, memeOwner: foundMeme.memeOwner});
+    })
 });
     
 server.get('/view-meme/:title', function(req, resp){
@@ -127,19 +191,15 @@ server.get('/view-meme/:title', function(req, resp){
     })
 });
     
-server.get('/meme-tagsDefault/:tags', function(req, resp){
-        console.log("Tag Search fields: " + req.params.tags);
-        var find = req.params.tags;
-        memeModel.searchMeme(find, function(list){
-            const data = { list:list };
-            console.log(data);
-            resp.render('./pages/meme-tagsDefault',{data: data,tag: req.params.tags});
-        })
-});
-    
 server.get('/edit-meme/:title', function(req,resp){
+    var title = req.params.title;
+    var findTitle = memeModel.findMemes(title);
+    findTitle.then((foundMeme)=>
+    {
+        resp.render('./pages/edit-meme',{memeID: foundMeme._id, memeTitle: foundMeme.memeTitle, memeimage: foundMeme.memeimage, memeTag: foundMeme.memeTag, memeShared: foundMeme.memeShared});
+    })
+});  
     
-    })  
 }
-    
+
 module.exports.Activate = memeModule;

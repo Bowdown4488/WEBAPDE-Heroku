@@ -86,7 +86,14 @@ function searchMeme (memeTag, callback){
         });
 }
 
+function editMeme (oldTitle, memeTitle, memeTag, memeimage, memePrivacy, memeShared){
+    console.log("Old: " + oldTitle + "+ " + "New: " + memeTitle);
+    memeModel.findOneAndUpdate({memeTitle: oldTitle},{
+                    memeTitle: memeTitle, memeTag: memeTag, memeimage: memeimage, memePrivacy: memePrivacy, memeShared: memeShared
+                  }).then();
+}
 
+module.exports.editMeme = editMeme;
 module.exports.viewPublicPrivate = viewPublicPrivate;
 module.exports.viewPublic = viewPublic;
 module.exports.addMeme = addMeme;

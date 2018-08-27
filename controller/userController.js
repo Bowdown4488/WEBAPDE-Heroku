@@ -36,13 +36,7 @@ server.get('/about-page', function(req, resp){
 server.get('/about-pageSigned', function(req, resp){
    resp.render('./pages/about-pageSigned');
 });
-
     
-    
-server.get('/meme-tags', function(req, resp){
-   resp.render('./pages/meme-tags');
-});
-        
 server.get('/', urlencoder,function(req, resp){
     if(req.session.username !== undefined){
         console.log("Test:" + req.session.username);
@@ -180,5 +174,15 @@ server.get('/other-page/:name', function(req, resp){
     })
 }); 
     
+server.get('/other-pageLoged/:name', function(req, resp){   
+    console.log("Getting: "+ req.params.name);
+    var findProfile = userModel.findOne(req.params.name);
+    findProfile.then((foundUser)=>
+    {
+        console.log("Object: " + foundUser);
+        resp.render('./pages/other-pageLoged',{username: foundUser.username, image: foundUser.image, userBio: foundUser.userBio});//, 
+    })
+});
+        
 }
 module.exports.Activate = userModule;

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>User Profile</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    $("#edit-button").click(function(){
+        $("#edit-modal").modal();
+    });
+  });
+  </script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+
+    .jumbotron {
+      color: white;
+      background-color: rebeccapurple;
+    }
+
+    body {
+      background-color: #1a1a1a;
+      color: white;
+      padding-top: 70px;
+    }
+  </style>
+    <base href = '/'>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div>
+        <a class="navbar-brand" href="/main-postlogin"><img src="./HMMMmmmmMMMMmmmm.png" class="img-responsive" width="35px" height="35px"></a>
+      </div>
+    </div>
+  </div>
+</nav>
+    
+     <!-- Modal -->
+  <div class="modal fade" id="edit-modal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body" style="padding:40px 50px;">
+          <form action = 'upload-meme' method="post" role="form">
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Meme Title</label>
+              <input type="text" class="form-control" id="usrname" name = 'memeTitle' placeholder="Enter Meme Title">
+            </div>
+              <input type="submit" class="btn btn-success btn-block" name= 'edit-meme' value = 'Edit' style="background-color: skyblue">
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <div class="container text-center">
+    <h3>Username: <%=username%></h3>
+    <img src="/new/<%=image%>" class="img-circle" alt="profile pic" width="350" height="350">
+  </div>   
+    <p>"<%=userBio%>"</p>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
+
+</body>
+</html>
