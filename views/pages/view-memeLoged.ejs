@@ -16,7 +16,7 @@
   </script>
   <style>
     .memeframe {
-      max-height: 300px;
+      max-height: 100%;
       max-width: 75%;
       align-content: center;
       /*border: solid;*/
@@ -24,13 +24,13 @@
     }
 
     .memecontainer {
-      max-height: 275px;
+      max-height: 100%;
       max-width: 75%;
       margin: auto;
     }
 
     .meme {
-      max-height: 275px;
+      max-height: 100%;
       min-height: 100%;
       max-width: 70%;
       min-width: 80%;
@@ -40,6 +40,22 @@
       size: 30%;
       height: 80px;
       background-color: grey;
+    }
+
+    .panel-default {
+      height: 100%; 
+      width: 100%; 
+      background-color: #737373;
+    }
+
+    .likes-span {
+      float: right;
+    }
+
+    .glyphicon-thumbs-up {
+      height: 40px;
+      width: 40px;
+      background-color: transparent;
     }
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -64,9 +80,6 @@
       padding-top: 70px;
     }
 
-    p {
-      color: cyan;
-    }
   </style>
     <base href = '/'>
 </head>
@@ -103,12 +116,17 @@
 <div class="row">
 <div class="col-sm-3 text-left"></div>
 <div class="col-sm-6 text-left">
-      <div class="panel panel-default" style="height: 500px; width: 700px; background-color: antiquewhite;">
-          <div class="panel-heading" style="background-color: #404040; color: white">
-            <span><h1 class="head"><strong><%=memeTitle%></strong></h1></span>
-            
+      <div class="panel panel-default" style="height: 100%; width: 100%; background-color: #737373;">
+          <div class="panel-heading" style="background-color: #404040; color: white;">
+            <span class="lead" style="font-size: 35px; font-weight: bold;">
+              <%= memeTitle%>
+            </span>
+            <span class="likes-span">
+              <button class="glyphicon glyphicon-thumbs-up"></button><br>
+              <div class="upvotes-tally">Likes: 0</div>
+            </span>
           </div>
-          <div class="panel-body">
+          <div class="panel-body" style="height: 100%;">
             <div class="memeframe">
                 <div class="memecontainer"><img src="/memes/<%=memeimage%>" class="meme"></div>
             </div>
@@ -119,12 +137,11 @@
               <tr>
                 <td>
                   <div class="container" style=" width: 350px; margin-left: 0px;">
-                  <small><p> Posted by : <strong><%=memeOwner%></strong></p></small>
-                  <div>
-                    <label>Tags: </label>
-<!--                    <span><input type="checkbox" name=""/></span>-->
-                     <a href="/meme-tagsDefault/<%=memeTag%>" type="button" class="btn-link" style="color: yellow;"><%=memeTag%></a>
-<!--                    <span><input type="checkbox" name=""/></span>-->
+                  <div style="font-size: 18px;">
+                    <a href="/other-page/<%= memeOwner %>"> Posted by : <%= memeOwner %> </a>
+                    <div>
+                      <a href="/meme-tagsDefaultMeme/<%= memeTag %>" type="button" class="btn-link">Tags: <%= memeTag %></a>  
+                    </div> 
                   </div>
 <!--
                   <span style="color: black;"><input type="button" class="btn btn-default" name="Delete" value="Delete Selected"></span>
@@ -136,8 +153,7 @@
                   </div>
                 </td>
                 <td>
-                  <label> Comments:</label>
-<!--                  <span class="text-center">In the year 2420, Obama has decided to evolve into a new and improved human specimen. One with incomprehensible greatness.</span>-->
+
                 </td>
               </tr>
             </table>
@@ -145,6 +161,18 @@
             
           </div>
       </div>
+
+      <div class="well" style="background-color: #404040;">
+        <label> Comments:</label>
+          <!-- this is what you need for comments -->
+        <span style="float: right;">ADD COMMENT</span>          
+        <div class="panel panel-default">
+          <span style="font-weight: bold;">*insert name of user*: </span>         
+          <div style="margin-left: 50px;">MESSAGE</div>
+        </div>
+
+      </div>
+
     </div>
 </div>
 </div>
