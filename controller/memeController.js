@@ -178,7 +178,7 @@ server.get('/view-memeLoged/:title', function(req, resp){
     findMeme.then((foundMeme)=>
     {
         console.log("Meme Found: " + foundMeme.memeTitle);
-        resp.render('./pages/view-memeLoged',{memeTitle: foundMeme.memeTitle, memeimage: foundMeme.memeimage, memeTag: foundMeme.memeTag, memeOwner: foundMeme.memeOwner});
+        resp.render('./pages/view-memeLoged',{memeTitle: foundMeme.memeTitle, memeimage: foundMeme.memeimage, memeTag: foundMeme.memeTag, memeOwner: foundMeme.memeOwner, memeLikes: foundMeme.memeLikes});
     })
 });
     
@@ -188,7 +188,7 @@ server.get('/view-meme/:title', function(req, resp){
     findMeme.then((foundMeme)=>
     {
         console.log("Meme Found: " + foundMeme.memeTitle);
-        resp.render('./pages/view-meme',{memeTitle: foundMeme.memeTitle, memeimage: foundMeme.memeimage, memeTag: foundMeme.memeTag, memeOwner: foundMeme.memeOwner});
+        resp.render('./pages/view-meme',{memeTitle: foundMeme.memeTitle, memeimage: foundMeme.memeimage, memeTag: foundMeme.memeTag, memeOwner: foundMeme.memeOwner, memeLikes: foundMeme.memeLikes});
     })
 });
     
