@@ -164,31 +164,23 @@ server.post('/main-page', function(req, resp){
       });
     });
   });
-
+    
 server.get('/user-profile', function(req, resp){   
     var findProfile = userModel.findOne(req.session.username);
     findProfile.then((foundUser)=>
     {
-//             viewUsers(function(list){
-//            const data = { list:list };
         console.log("Object: " + foundUser);
         resp.render('./pages/user-profile',{username: req.session.username, image: foundUser.image, userBio: foundUser.userBio});//, 
-//        data:data
-//            });
     })
 }); 
 
-server.get('/user-profile/:name', function(req, resp){   
-    console.log("Getting: "+ req.id.params);
-    var findProfile = userModel.findOne(req.session.username);
+server.get('/other-page/:name', function(req, resp){   
+    console.log("Getting: "+ req.params.name);
+    var findProfile = userModel.findOne(req.params.name);
     findProfile.then((foundUser)=>
     {
-//             viewUsers(function(list){
-//            const data = { list:list };
         console.log("Object: " + foundUser);
-        resp.render('./pages/user-profile',{username: req.session.username, image: foundUser.image, userBio: foundUser.userBio});//, 
-//        data:data
-//            });
+        resp.render('./pages/other-page',{username: foundUser.username, image: foundUser.image, userBio: foundUser.userBio});//, 
     })
 }); 
     
