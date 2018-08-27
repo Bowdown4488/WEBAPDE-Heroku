@@ -40,11 +40,7 @@ server.get('/about-pageSigned', function(req, resp){
 server.get('/meme-tags', function(req, resp){
    resp.render('./pages/meme-tags');
 });
-
-server.get('/meme-tagsDefault', function(req, resp){
-   resp.render('./pages/meme-tagsDefault');
-}); 
-    
+        
 //server.get('/view-meme2', function(req, resp){
 //   resp.render('./pages/view-meme2');
 //});
@@ -147,6 +143,7 @@ server.get('/sign-up', function(req, resp){
 server.post('/main-page', function(req, resp){
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
+      console.log(fields.username);
       var hashedpassword = crypto.createHash("md5").update(fields.password).digest("hex");
       var oldpath = files.image.path;
       var newpath = path.join('./','public','new',files.image.name);
@@ -179,7 +176,7 @@ server.get('/user-profile', function(req, resp){
 //        data:data
 //            });
     })
-});
+}); 
     
 }
 module.exports.Activate = userModule;

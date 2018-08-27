@@ -6,8 +6,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ <script>
+ $(document).ready(function(){
+    $('.materialboxed').materialbox();
+  });   
+ </script>
+    
   <style>
+    .main-header {
+      color: #e6e6e6;
+    }
+
+    .memeframe {
+      max-height: 450px;
+      max-width: 80%;
+      align-content: center;
+      /*border: solid;*/
+      margin: auto;
+    }
+
+    .memecontainer {
+      max-height: 425px;
+      max-width: 70%;
+      margin: auto;
+    }
+
+    .meme {
+      max-height: 425px;
+      min-height: 100%;
+      max-width: 70%;
+      min-width: 100%;
+    }
+
+    .modal-header {
+      background-image: url("./memebackground.jpg");
+    }
+    .panel {
+      width: 100%;
+      min-height: 300px;
+    }
+
+    .panel-group {
+      margin: auto;
+    }
+
+    .panel-body {
+      align-content: center;
+      justify-content: center;
+      padding: 2px;
+    }
+
+    .panel-heading {
+   	  size: 20%;
+   	  height: 100px
+    }
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
       margin-bottom: 0;
@@ -41,11 +96,17 @@
       .btn-mar{
           margin-bottom: 10px;
       }
+      
+        body {
+      background-color: #404040;
+      padding-top: 70px;
+        background-image: url("./background.jpg");
+      }
   </style>
 </head>
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -60,26 +121,189 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="/about-page">About</a></li>
+        <li><a href="./about-page">About</a></li>
       </ul>
-      <form class="navbar-form navbar-left">
+      <form  action = '/meme-tagsDefault' class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control" placeholder="Search Tags..">
         </div>
-        <button type="submit" class="btn btn-default">Search</button>
+        <input type="submit" class="btn btn-default" name='submit' value='Search' >
+        <span class="glyphicon glyphicon-search"></span>
       </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href = "/sign-up" class="btn btn-md" style="color: white;font-size: 18px;"id="signup-button">Sign-up</a></li>
+        <li><button type="button" class="btn btn-default btn-lg" id="login-button">Login</button></li>
+      </ul>
     </div>
   </div>
 </nav>
-
-<div class="row">
-<div class="container">
-<div class="col-sm-4"></div>
-  <div class="col-sm-4 mid">
-      <div class="col-sm-6 text-left"></div>
-    <div class="col-sm-4"> 
+    
+    <!-- Modal -->
+<div class="modal fade" id="login-modal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px; color: black; font-weight: bold;">
+          <button type="button" class="close" data-dismiss="modal" style="size: 30px;">&times;</button>
+          <div style="background: white; border: solid; padding: 10px 20px;"><h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+           <p> Connect with the following sites: </p></div>
+           <span><a href="https://www.facebook.com/"><img src="./fb.png" class="img-rounded" width="50px" height="50px"></a></span> 
+            <span> <a href="https://accounts.google.com/ServiceLogin/signinchooser?elo=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><img src="./Google.png" class="img-rounded" width="50px" height="50px"></a></span> 
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form action = 'main-postLogin' method="post" role="form">
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+              <input type="text" class="form-control" id="usrname" name = 'username' placeholder="Enter Username">
+            </div>
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+              <input type="password" class="form-control" id="psw" name = 'password' placeholder="Enter password">
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="" checked>Remember me</label>
+            </div>
+              <input type="submit" class="btn btn-success btn-block" name= 'login' value = 'login' style="background-color: skyblue">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          <p>Not a member? <a href="/sign-up">Sign Up</a></p>
+          <p>Forgot <a href="#">Password?</a></p>
+        </div>
+      </div>
+      
     </div>
+  </div> 
+
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <!-- <p><a href="#">Hot</a></p>
+      <p><a href="#">Random</a></p>
+      <p><a href="#">Favorites</a></p> -->
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <div class="main-header " style="font-style: italic; font-weight: bold;">
+      <h1 style="font-size: 70px;">MEME FACTORY</h1>
+      <table>
+        <tr>
+          <td>
+            <div style="font-size: 30px; width: 500px;">~Tags Result: <%=tag%> 
+            </div>
+          </td>
+        
+        <td>
+          <span>
+          <img src="./datboi.gif" width="100px" height="100px" style="margin-left: 200px;">
+          </span>
+        </td>
+      </tr>
+        
+      </table>
+      
+
+      <hr>
+      </div>
+      
+      <!-- <h3>Test</h3>
+      <p>Lorem ipsum...</p> -->
+      
+    </div> 
   </div>
+  <div class="row">
+  	<div class="container">
+  	<div class="panel-group">
+<!--
+  	<div class="col-sm-4 text-left">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h1 class="lead"><strong>Ichigo means strawberry in Japanese</strong></h1></div>
+          <div class="panel-body">
+            <div class="memeframe">
+            <div class="memecontainer materialboxed"><img src="./ichigo.jpg"  class="meme"></div>
+            <p>Posted by : Admin</p>
+            <span><button type="button" class="btn-link">Franxx</button> <button type="button" class="btn-link">Ichigo</button>
+            <button type="button" class="btn-link">Anime</button> <button type="button" class="btn-link">02</button>
+            <button type="button" class="btn-link">Ichigo</button> 
+            </span>
+            </div>
+              <a href="/view-meme" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
+          </div>
+        </div>
+    </div>        
+-->
+  	<div class="col-sm-2 text-left">
+    </div>       
+        
+  	<div class="col-sm-6 text-left">
+        <% for(var i=0;i<data.list.length;i++){ %>
+        <div class="panel panel-default">
+          <div class="panel-heading"><h1 class="lead"><strong><%= data.list[i].memeTitle %></strong></h1></div>
+          <div class="panel-body">
+            <div class="memeframe">
+            <div class="memecontainer materialboxed"><img src="/memes/<%= data.list[i].memeimage %>"  class="meme"></div>
+            <p></p>
+            <a href="/user-profile"> Posted by : <%= data.list[i].memeOwner %> </a> <br>
+            <span><button type="button" class="btn-link"><%= data.list[i].memeTag %></button> 
+<!--
+            <button type="button" class="btn-link">Ichigo</button>
+            <button type="button" class="btn-link">Anime</button> <button type="button" class="btn-link">02</button>
+            <button type="button" class="btn-link">Ichigo</button> 
+-->
+            </span>
+            </div>
+          </div>
+            <a href="/view-meme" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
+        </div>
+        <% } %> 
+    </div>
+<!--
+    <div class="col-sm-4 text-left">
+        <div class="panel panel-default">
+          <div class="panel-heading"><h1 class="lead"><strong>Cute Puppy</strong></h1></div>
+          <div class="panel-body">
+            <div class="memeframe">
+            <div class="memecontainer materialboxed"><img src="./gif.jpg" class="meme"></div>
+            <p> Posted by : Admin</p>
+            <span><button type="button" class="btn-link">Kyot</button> <button type="button" class="btn-link">Pupper</button>
+            <button type="button" class="btn-link">Doggo</button>
+            </span>
+            </div>
+              <a href="/view-meme3" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
+          </div>
+        </div>
+    </div> 
+-->
+        
+    </div>  
+  	</div>
+  </div>
+<!--
+  	<div class="container-fluid" style="float: right;">
+  	<table>
+  		<tr>
+  		<td>
+  			<ul class="pagination">
+			    <li class="active"><a href="#">1</a></li>
+			    <li><a href="#">2</a></li>
+			    <li><a href="#">3</a></li>
+			    <li><a href="#">4</a></li>
+			    <li><a href="#">5</a></li>
+			</ul>
+  		</td>
+  		<td>
+  			<ul class="pager">
+			  <li><a href="#">Previous</a></li>
+			  <li><a href="#">Next</a></li>
+			</ul>
+  		</td>
+  		
+  		</tr>
+  	</table>
+	  
+	</div>
+-->
 </div>
 </body>
 </html>

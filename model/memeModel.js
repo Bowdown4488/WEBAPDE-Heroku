@@ -66,8 +66,18 @@ function addMeme(memeTitle, memeimage, memeTag, memeOwner, memePrivacy, callback
    });
 }   
 
+function searchMeme (memeTag, callback){
+       console.log("Search substring: "+ memeTag);
+       memeModel.find({memeTag: {$regex: memeTag, $options: 'i'}}).then((list)=>
+        {
+            console.log("List: " + list);
+            callback(list);
+        });
+}
+
 module.exports.addMeme = addMeme;
 module.exports.findOwner = findOwner;
 module.exports.viewMeme = viewMeme;
 module.exports.findMemes = findMemes;
 module.exports.viewMyMeme = viewMyMeme;
+module.exports.searchMeme = searchMeme;

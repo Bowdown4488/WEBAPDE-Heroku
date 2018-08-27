@@ -141,12 +141,12 @@ $(document).ready(function(){
       <ul class="nav navbar-nav">
         <li><a href="./about-page">About</a></li>
       </ul>
-      <form  action = '/meme-tagsDefault' class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search Tags..">
-        </div>
-        <input type="submit" class="btn btn-default" name='submit' value='Search' >
-        <span class="glyphicon glyphicon-search"></span>
+      <form action = 'meme-tagsDefault' method="post" class="navbar-form navbar-left" role="form">
+            <div class="form-group">
+                <input type="text" class="form-control" name='memeTag' placeholder="Search Tags..">
+            </div>
+            <input type="submit" class="btn btn-default" value='Search'>
+<!--            <span class="glyphicon glyphicon-search"></span>-->
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href = "/sign-up" class="btn btn-md" style="color: white;font-size: 18px;"id="signup-button">Sign-up</a></li>
@@ -298,6 +298,7 @@ $(document).ready(function(){
     </div>  
   	</div>
   </div>
+<!--
   	<div class="container-fluid" style="float: right;">
   	<table>
   		<tr>
@@ -321,6 +322,7 @@ $(document).ready(function(){
   	</table>
 	  
 	</div>
+-->
 </div>
 
 <!-- <footer class="container-fluid text-center">
