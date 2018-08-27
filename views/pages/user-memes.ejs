@@ -36,6 +36,7 @@
       background-color: #1a1a1a;
       color: white;
       padding-top: 70px;
+      background-image: url("./background.jpg");
     }
 
     .memecontainer {
@@ -77,6 +78,11 @@
     .header-stuff {
     	float: right;
     }
+
+    .tags-label {
+    	margin-right: 10px;
+    	
+    }
   </style>
 </head>
 <body>
@@ -116,6 +122,7 @@
       		<div class="panel panel-default" style="height: 100%;">
 	      	 <div class="panel-heading"><span class="title"><%= data.list[i].memeTitle %></span>
 	      	 	<span class="header-stuff">
+	      	 		<span class="tags-label">Tags: <%= data.list[i].memeTag %></span>
 	      	 		<a a href="/edit-meme/<%= data.list[i].memeTitle%>" class="glyphicon glyphicon-edit"></a>
 	      	 	</span>
 	      	 </div>
