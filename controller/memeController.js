@@ -113,17 +113,14 @@ server.get('/view-meme',urlencoder, function(req, resp){
    
 });
 
-server.post('/meme-tagsDefault', function(req, resp){
-        var form = new formidable.IncomingForm();
-        form.parse(req, function(err, fields){
-        console.log("Tag Search fields: " + fields.memeTag);
-        var find = fields.memeTag;
+server.get('/meme-tagsDefault', function(req, resp){
+        console.log("Tag Search fields: " + req.query.memeTag);
+        var find = req.query.memeTag;
         memeModel.searchMeme(find, function(list){
             const data = { list:list };
             console.log(data);
-            resp.render('./pages/meme-tagsDefault',{data: data,tag: fields.memeTag});
+            resp.render('./pages/meme-tagsDefault',{data: data,tag: req.query.memeTag});
         })
-    });
 });
     
 }

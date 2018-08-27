@@ -1,7 +1,6 @@
 const mongoose = require('./connectionModel').connection;
 
 const memeSchema = mongoose.Schema({
-    //memeID: String,
 	memeTitle: String,
     memeimage: { type: String },
     memeTag: String,
@@ -30,15 +29,6 @@ function viewMeme(callback){
     callback(list);
   });
 }
-
-//function viewMyMeme(find, callback){
-////  console.log(memeTitle);
-//  memeModel.find({memeTitle: {$regex: find, $options: 'i'}}, function (err, list) {
-//    console.log(find);
-//    if(err) return console.error(err);
-//    callback(list);
-//  });
-//}
 
 function addMeme(memeTitle, memeimage, memeTag, memeOwner, memePrivacy, callback){
   const instance = memeModel({ memeTitle: memeTitle, memeimage: memeimage, memeTag: memeTag, memeOwner: memeOwner, memePrivacy: memePrivacy });
@@ -74,6 +64,10 @@ function searchMeme (memeTag, callback){
             callback(list);
         });
 }
+
+
+
+
 
 module.exports.addMeme = addMeme;
 module.exports.findOwner = findOwner;

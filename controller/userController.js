@@ -177,6 +177,20 @@ server.get('/user-profile', function(req, resp){
 //            });
     })
 }); 
+
+server.get('/user-profile/:name', function(req, resp){   
+    console.log("Getting: "+ req.id.params);
+    var findProfile = userModel.findOne(req.session.username);
+    findProfile.then((foundUser)=>
+    {
+//             viewUsers(function(list){
+//            const data = { list:list };
+        console.log("Object: " + foundUser);
+        resp.render('./pages/user-profile',{username: req.session.username, image: foundUser.image, userBio: foundUser.userBio});//, 
+//        data:data
+//            });
+    })
+}); 
     
 }
 module.exports.Activate = userModule;

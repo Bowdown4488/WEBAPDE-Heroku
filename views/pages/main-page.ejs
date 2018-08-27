@@ -141,7 +141,7 @@ $(document).ready(function(){
       <ul class="nav navbar-nav">
         <li><a href="./about-page">About</a></li>
       </ul>
-      <form action = 'meme-tagsDefault' method="post" class="navbar-form navbar-left" role="form">
+      <form action = 'meme-tagsDefault' method="get" class="navbar-form navbar-left" role="form">
             <div class="form-group">
                 <input type="text" class="form-control" name='memeTag' placeholder="Search Tags..">
             </div>
@@ -263,7 +263,7 @@ $(document).ready(function(){
             <div class="memeframe">
             <div class="memecontainer materialboxed"><img src="/memes/<%= data.list[i].memeimage %>"  class="meme"></div>
             <p></p>
-            <a href="/user-profile"> Posted by : <%= data.list[i].memeOwner %> </a> <br>
+            <a href="/user-profile/"+<%= data.list[i].memeOwner %>> Posted by : <%= data.list[i].memeOwner %> </a> <br>
             <span><button type="button" class="btn-link"><%= data.list[i].memeTag %></button> 
 <!--
             <button type="button" class="btn-link">Ichigo</button>
