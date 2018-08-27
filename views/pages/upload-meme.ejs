@@ -8,6 +8,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script>
+    function PreviewImage() {
+          let Reader = new FileReader();
+          Reader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+  
+          Reader.onload = function (readerEvent) {
+              document.getElementById("uploadPreview").src = readerEvent.target.result;
+          };
+    };
+      
     $(document).ready(function(){
     $(".upload").click(function(){
         alert("User has uploaded meme");
@@ -53,6 +62,17 @@
         padding-bottom: 20px;
         padding-top: 20px;
       }
+      
+      #dropbox {
+            border: 2px solid;
+            height: 120px;
+            width: 120px;
+          }
+      #uploadPreview{
+            align-content: center;
+            width: 120px; 
+            height: 120px;
+       }
   </style>
 </head>
 <body>
@@ -88,10 +108,18 @@
 <div class="container">
 <div class="col-sm-4"></div>
   <div class="col-sm-4 mid">
-    <img src="https://placehold.it/150x80?text=IMAGE" class="img" alt="upload avatar" style="border: solid black;"> 
+<!--    <img src="https://placehold.it/150x80?text=IMAGE" class="img" alt="upload avatar" style="border: solid black;"> -->  
     <form action="user-profile" method= "post" name = 'upload' enctype="multipart/form-data">
+        <div id="imageBorder">
+          <div id="imageContainer">
+            <div id="dropbox">
+                <img id="uploadPreview" />
+            </div>
+          </div>
+       </div>  
+        
         <div>
-            <input type="file" name = 'memeimage' id="avatar-button">
+            <input type="file" name = 'memeimage' onchange="PreviewImage();" id="uploadImage" accept="image/*"/>
         </div>
         <div>
             <h4>Meme Title:</h4>
@@ -117,3 +145,5 @@
 </div>
 </body>
 </html>
+
+
