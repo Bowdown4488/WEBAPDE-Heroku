@@ -2,6 +2,7 @@
 <html lang="en">
 <!-- <meta http-equiv="refresh" content="1" > -->
 <head>
+    <base href = '/'>
   <title>MEME FACTORY</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -234,10 +235,10 @@ $(document).ready(function(){
               <%= data.list[i].memeTitle %>
             </span>
             <span class="likes-span">
-              <button class="glyphicon glyphicon-thumbs-up"></button><br>
-              <div class="upvotes-tally">Likes: 0</div>
+              <a href="/meme-likes/<%= data.list[i].memeTitle%>" class="glyphicon glyphicon-thumbs-up"></a><br>
+              <div class="upvotes-tally">Likes: <%= data.list[i].memeLikes.length %></div>
             </span>
-
+              
             <br>
             <a href="/other-page/<%= data.list[i].memeOwner %>"> Posted by : <%= data.list[i].memeOwner %> </a>
             <span>

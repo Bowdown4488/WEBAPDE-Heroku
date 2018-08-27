@@ -16,6 +16,12 @@
         $("#login-modal").modal();
     });
   });
+      
+   $(document).ready(function(){
+    $(".notif").click(function(){
+        alert("Please Login to Like a Meme");
+    });
+  });
   </script>
   <script>
     
@@ -274,8 +280,8 @@ $(document).ready(function(){
               <%= data.list[i].memeTitle %>
             </span>
             <span class="likes-span">
-              <button class="glyphicon glyphicon-thumbs-up"></button><br>
-              <div class="upvotes-tally">Likes: 0</div>
+              <button class="glyphicon glyphicon-thumbs-up notif"></button><br>
+              <div class="upvotes-tally">Likes: <%= data.list[i].memeLikes.length %></div>
             </span>
 
             <br>

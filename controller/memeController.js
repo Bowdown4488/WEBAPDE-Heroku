@@ -5,6 +5,7 @@ const bodyparser = require('body-parser')
 const path = require('path')
 const fs = require('fs');//used for file upload
 const expressSanitizer = require('express-sanitizer');
+const cool = require("cool-ascii-faces");
 
 function memeModule(server){
 server.use(expressSanitizer());
@@ -198,7 +199,22 @@ server.get('/edit-meme/:title', function(req,resp){
     {
         resp.render('./pages/edit-meme',{memeID: foundMeme._id, memeTitle: foundMeme.memeTitle, memeimage: foundMeme.memeimage, memeTag: foundMeme.memeTag, memeShared: foundMeme.memeShared});
     })
-});  
+}); 
+    
+server.get('/meme-likes/:title', function (req,resp){
+    console.log("Title " + req.params.title);
+    console.log("User " + req.session.username);
+    memeModel.addLike(req.params.title,req.session.username);
+    var findUser = userModel.findOne(req.session.username)
+    findUser.then((foundUser)=>
+     {
+         var user = req.session.username;
+         memeModel.viewPublicPrivate(user,function(list){
+             const data = { list:list };
+            resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image, faces: cool(),data: data}); 
+         });
+     }) 
+});
     
 }
 

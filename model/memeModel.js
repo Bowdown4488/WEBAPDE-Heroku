@@ -5,6 +5,7 @@ const memeSchema = mongoose.Schema({
     memeimage: { type: String },
     memeTag: String,
 	memeOwner: String,
+    memeLikes: [String],
 //	memeDate: String,
 //	memeDateTime: Date,
     memePrivacy:String,
@@ -93,6 +94,26 @@ function editMeme (oldTitle, memeTitle, memeTag, memeimage, memePrivacy, memeSha
                   }).then();
 }
 
+function addLike(search, username){
+    console.log("add function");
+    memeModel.findOne({memeTitle: search}).then((memeFound) => {
+      var find = 0;
+       console.log("meme: " + memeFound);
+      for(i=0;i<memeFound.memeLikes.length;i++){
+        if(memeFound.memeLikes[i]==username)
+        find = 1;
+      }
+      if(find == 0){
+          memeModel.findOneAndUpdate({
+          memeTitle: search
+          },{
+          $push: {memeLikes: username}
+        }).then();
+    }
+    })
+}
+
+module.exports.addLike = addLike;
 module.exports.editMeme = editMeme;
 module.exports.viewPublicPrivate = viewPublicPrivate;
 module.exports.viewPublic = viewPublic;
