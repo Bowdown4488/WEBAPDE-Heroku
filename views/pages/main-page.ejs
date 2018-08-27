@@ -264,7 +264,7 @@ $(document).ready(function(){
             <div class="memecontainer materialboxed"><img src="/memes/<%= data.list[i].memeimage %>"  class="meme"></div>
             <p></p>
             <a href="/other-page/<%= data.list[i].memeOwner %>"> Posted by : <%= data.list[i].memeOwner %> </a> <br>
-            <span><button type="button" class="btn-link"><%= data.list[i].memeTag %></button> 
+            <span><a href="/meme-tagsDefault/<%= data.list[i].memeTag %>" type="button" class="btn-link"><%= data.list[i].memeTag %></a> 
 <!--
             <button type="button" class="btn-link">Ichigo</button>
             <button type="button" class="btn-link">Anime</button> <button type="button" class="btn-link">02</button>
@@ -273,7 +273,7 @@ $(document).ready(function(){
             </span>
             </div>
           </div>
-            <a href="/view-meme" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
+            <a href="/view-meme/<%= data.list[i].memeTitle %>" type = "button" class = "btn btn-warning btn-xs btn-block">View</a>
         </div>
         <% } %> 
     </div>

@@ -27,5 +27,9 @@ for(var i=0;i<controllers.length;i++){
   mdl.Activate(server);
 }
 
+//server.use("*", (req,res)=>{
+//    res.render("./pages/error-page");
+//})
+
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`))
 

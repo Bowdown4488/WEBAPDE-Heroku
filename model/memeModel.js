@@ -65,10 +65,6 @@ function searchMeme (memeTag, callback){
         });
 }
 
-
-
-
-
 module.exports.addMeme = addMeme;
 module.exports.findOwner = findOwner;
 module.exports.viewMeme = viewMeme;

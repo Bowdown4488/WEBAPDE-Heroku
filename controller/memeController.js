@@ -78,11 +78,6 @@ server.post('/user-profile', function(req, resp){
             {
                 resp.render('./pages/user-profile',{username: req.session.username, image: foundUser.image, userBio: foundUser.userBio});
             })
-//            viewUsers(function(list){
-//            const data = { list:list };
-            
-            //, data:data
-//            });
             });
         })//addmeme to DB
       });
@@ -102,17 +97,6 @@ server.post('/upload-meme', urlencoder,function(req, resp){
     });
 });
     
-server.get('/view-meme',urlencoder, function(req, resp){
-    console.log("Title: " + req.body.memeTitle)
-    var findMeme = memeModel.findOwner(req.body.memeTitle);
-    findMeme.then((foundMeme)=>
-    {
-        console.log("Meme Found: " + foundMeme);
-        resp.render('./pages/view-meme',{memeTitle: foundMeme.memeTitle, memeImage: foundMeme.memeImage, memeTag: foundMeme.memeTag, memeOwner: foundMeme.memeOwner});
-    })
-   
-});
-
 server.get('/meme-tagsDefault', function(req, resp){
         console.log("Tag Search fields: " + req.query.memeTag);
         var find = req.query.memeTag;
@@ -120,6 +104,26 @@ server.get('/meme-tagsDefault', function(req, resp){
             const data = { list:list };
             console.log(data);
             resp.render('./pages/meme-tagsDefault',{data: data,tag: req.query.memeTag});
+        })
+});
+    
+server.get('/view-meme/:title', function(req, resp){
+    console.log("Title passed: " + req.params.title);
+    var findMeme = memeModel.findMemes(req.params.title);
+    findMeme.then((foundMeme)=>
+    {
+        console.log("Meme Found: " + foundMeme.memeTitle);
+        resp.render('./pages/view-meme',{memeTitle: foundMeme.memeTitle, memeimage: foundMeme.memeimage, memeTag: foundMeme.memeTag, memeOwner: foundMeme.memeOwner});
+    })
+});
+    
+server.get('/meme-tagsDefault/:tags', function(req, resp){
+        console.log("Tag Search fields: " + req.params.tags);
+        var find = req.params.tags;
+        memeModel.searchMeme(find, function(list){
+            const data = { list:list };
+            console.log(data);
+            resp.render('./pages/meme-tagsDefault',{data: data,tag: req.params.tags});
         })
 });
     

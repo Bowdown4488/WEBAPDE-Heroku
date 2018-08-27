@@ -41,15 +41,6 @@ server.get('/meme-tags', function(req, resp){
    resp.render('./pages/meme-tags');
 });
         
-//server.get('/view-meme2', function(req, resp){
-//   resp.render('./pages/view-meme2');
-//});
-//
-//server.get('/view-meme3', function(req, resp){
-//   resp.render('./pages/view-meme3');
-//});
-    
-
 server.get('/', urlencoder,function(req, resp){
     if(req.session.username !== undefined){
         console.log("Test:" + req.session.username);
