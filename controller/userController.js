@@ -136,7 +136,7 @@ server.post('/main-page', function(req, resp){
       console.log(fields.username);
       var hashedpassword = crypto.createHash("md5").update(fields.password).digest("hex");
       var oldpath = files.image.path;
-      var newpath = path.join('./','public','new',files.image.name);
+      var newpath = path.join('./','public','New',files.image.name);
       fs.rename(oldpath, newpath, function (err) {
         console.log('Saving files to new folder');
         if (err) throw err;
