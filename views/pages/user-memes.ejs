@@ -39,7 +39,43 @@
     }
 
     .memecontainer {
-      border: solid pink;
+      margin: auto;
+      max-height: 100%;
+      min-height: 350px;
+      max-width: 90%;
+      align-content: center;
+      justify-content: center;
+      
+    }
+
+    .meme {
+    	margin: auto;
+    	margin-left: 25%;
+    	max-height: 350px;
+      	min-height: 100%;
+      	max-width: 400px;
+      	min-width: 50%;
+    }
+
+    .panel-body {
+    	height: 100%;
+    	align-content: center;
+    	justify-content: center;
+
+    }
+
+    .panel-heading {
+    	height: 50px;
+
+    }
+
+    .title {
+    	font-size: 20px;
+    	font-weight: bold;
+    }
+
+    .header-stuff {
+    	float: right;
     }
   </style>
 </head>
@@ -72,17 +108,33 @@
 
 <div class="container-fluid bg-3 text-center">    
   <h3>Recent memes</h3><br>
-    <div class="col-sm-4 text-left">
-      <% for(var i=0;i<data.list.length;i++){ %>
-      <% if(i%4 === 0){ %>
-      <div class="row">
-      <div class = "memecontainer"><img src="/memes/<%= data.list[i].memeimage %>" class="img-responsive " width = "400" height = "300" alt="Image"></div><br>
-      </div>
-      <% } else { %>
-      <div class = "memecontainer"><img src="/memes/<%= data.list[i].memeimage %>" class="img-responsive " width = "400" height = "300" alt="Image"></div><br>
+  	<% var j = 0; %>
+  	<% while(data.list[j] != null){ %>
+      	<div class="row" style="margin: auto; height: 480px;">
+      <% for(var i = j;i < j+3 && data.list[i] != null;i++){ %>
+      	  <div class="col-sm-4 text-left" style="height: 390px;">
+      		<div class="panel panel-default" style="height: 100%;">
+	      	 <div class="panel-heading"><span class="title"><%= data.list[i].memeTitle %></span>
+	      	 	<span class="header-stuff">
+	      	 		<button class="glyphicon glyphicon-edit"></button>
+	      	 	</span>
+	      	 </div>
+	      	  <div class="panel panel-body">
+	      <% console.log("i: "+i) %>
+      
+	      
+		      <div class = "memecontainer">
+		      <img src="/memes/<%= data.list[i].memeimage %>" class="meme" alt = "Image">
+		  	  </div>
+      		  </div>
+      		 </div>
+	      </div>    
+	      
       <% } %>
-    </div>
-      <% } %>    
+      	</div>
+      <% j = j + 3; %>
+      <% console.log("j: "+j) %>
+      <% } %>
 </div>
 
 </body>
