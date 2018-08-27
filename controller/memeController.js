@@ -59,19 +59,29 @@ server.post('/user-profile', function(req, resp){
             var cleanImage = req.sanitize(files.memeimage.name);
             var cleanTag = req.sanitize(fields.memeTag);
             var cleanPrivacy = req.sanitize(fields.memePrivacy);
-            memeModel.addMeme(cleanTitle, cleanImage, cleanTag ,foundUser.username , cleanPrivacy ,function(){ 
+                
+            var array = fields.memeShared.split(" ");
+//            var user = req.session.username;
+//            array.push(user);//push the user to the list so that he can see his memes
+            console.log("Shared to: "+ array);
+ 
+            var cleanShared = req.sanitize(array);
+                
+            memeModel.addMeme(cleanTitle, cleanImage, cleanTag ,foundUser.username , cleanPrivacy , cleanShared, function(){ 
             console.log("Pushed Meme");
             console.log(cleanTitle);
             console.log(cleanImage);
             console.log(cleanTag );
             console.log(foundUser.username );
             console.log(cleanPrivacy);
+            console.log(cleanShared);
             //console.log("Object: " + foundUser);
             var newmeme = {
                 memeTitle: cleanTitle,
                 memeimage: cleanImage,
                 memeTag: cleanTag,
-                memePrivacy: cleanPrivacy
+                memePrivacy: cleanPrivacy,
+                memeShared: cleanShared
             }
             foundUser.meme.push(newmeme);
             foundUser.save().then((foundUser)=>

@@ -8,9 +8,7 @@ const memeSchema = mongoose.Schema({
 //	memeDate: String,
 //	memeDateTime: Date,
     memePrivacy:String,
-//    memeShared:[{
-//        username:String
-//    }],
+    memeShared:[String],
 //	memeComment: Number
 //    ,
 //	memeComment: [{
@@ -30,8 +28,31 @@ function viewMeme(callback){
   });
 }
 
-function addMeme(memeTitle, memeimage, memeTag, memeOwner, memePrivacy, callback){
-  const instance = memeModel({ memeTitle: memeTitle, memeimage: memeimage, memeTag: memeTag, memeOwner: memeOwner, memePrivacy: memePrivacy });
+function viewPublic(callback){
+    memeModel.find({memePrivacy: "Public"}).then((list)=>
+   {
+        console.log("List: " + list);
+        callback(list);
+   })
+}
+
+function viewPublicPrivate(user, callback){
+    console.log("Username: " + user);
+    memeModel.find({memePrivacy: "Public"}).then((list)=>
+   {
+        console.log("List: " + list);
+        memeModel.find({memeShared: user}).then((list2)=>
+        {
+            console.log("List2: " + list2);
+            list = list.concat(list2);
+            console.log("Concat: " + list);
+            callback(list);
+        })
+   });
+}
+
+function addMeme(memeTitle, memeimage, memeTag, memeOwner, memePrivacy, memeShared, callback){
+  const instance = memeModel({ memeTitle: memeTitle, memeimage: memeimage, memeTag: memeTag, memeOwner: memeOwner, memePrivacy: memePrivacy, memeShared: memeShared });
    console.log("Adding meme" + {memeTag: memeTag});
   instance.save(function (err, inv) {
     if(err) return console.error(err);
@@ -65,6 +86,9 @@ function searchMeme (memeTag, callback){
         });
 }
 
+
+module.exports.viewPublicPrivate = viewPublicPrivate;
+module.exports.viewPublic = viewPublic;
 module.exports.addMeme = addMeme;
 module.exports.findOwner = findOwner;
 module.exports.viewMeme = viewMeme;

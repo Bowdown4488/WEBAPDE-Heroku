@@ -47,10 +47,10 @@ server.get('/', urlencoder,function(req, resp){
         var findUser = userModel.findOne(req.session.username)
         findUser.then((foundUser)=>
         {
-            if(err) return console.error(err);
             if(foundUser != undefined && foundUser.username != null){
                 req.session.username = foundUser.username;
-                memeModel.viewMeme(function(list){
+                var user = req.session.username;
+                memeModel.viewPublicPrivate(user, function(list){
                 const data = { list:list };
                 resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image, faces: cool(),data: data}); 
              });
@@ -58,7 +58,7 @@ server.get('/', urlencoder,function(req, resp){
         })
     }       
     else{
-    memeModel.viewMeme(function(list){
+    memeModel.viewPublic(function(list){
       const data = { list:list };
       resp.render('./pages/main-page',{data: data});
     });
@@ -66,7 +66,7 @@ server.get('/', urlencoder,function(req, resp){
 });
 
 server.get('/main-page', urlencoder,function(req, resp){
-    memeModel.viewMeme(function(list){
+    memeModel.viewPublic(function(list){
       const data = { list:list };
       resp.render('./pages/main-page',{data: data});
     });
@@ -76,7 +76,8 @@ server.get('/main-postLogin', urlencoder,function(req, resp){
         var findUser = userModel.findOne(req.session.username)
         findUser.then((foundUser)=>
         {
-            memeModel.viewMeme(function(list){
+            var user = req.session.username;
+            memeModel.viewPublicPrivate(user,function(list){
                 const data = { list:list };
                 resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image, faces: cool(),data: data}); 
              });
@@ -94,7 +95,8 @@ server.post('/main-postLogin', urlencoder,function(req, resp){
         var findUser = userModel.findOne(req.session.username)
         findUser.then((foundUser)=>
         {
-            memeModel.viewMeme(function(list){
+            var user = req.session.username;
+            memeModel.viewPublicPrivate(user,function(list){
                 const data = { list:list };
                 resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image, faces: cool(),data: data}); 
              });
@@ -113,13 +115,14 @@ server.post('/main-postLogin', urlencoder,function(req, resp){
            console.log("DB: " + foundUser.password);
           if(hashedcheck === foundUser.password){
               req.session.username = foundUser.username;
-             memeModel.viewMeme(function(list){
+              var user = req.session.username;
+              memeModel.viewPublicPrivate(user,function(list){
                 const data = { list:list };
                 resp.render('./pages/main-postLogin',{username: req.session.username,image: foundUser.image, faces: cool(),data: data}); 
              });
           }
       }else
-    memeModel.viewMeme(function(list){
+    memeModel.viewPublic(function(list){
       const data = { list:list };
       resp.render('./pages/main-page',{data: data});
     });
@@ -147,7 +150,7 @@ server.post('/main-page', function(req, resp){
         var cleanEmail = req.sanitize(fields.email);
         var cleanBio = req.sanitize(fields.userBio);
         userModel.addUser(cleanUser, cleanPass , cleanImage, cleanEmail , cleanBio ,function(){ 
-        memeModel.viewMeme(function(list){
+        memeModel.viewPublic(function(list){
             const data = { list:list };
             resp.render('./pages/main-page',{data: data});
         });
