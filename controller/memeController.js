@@ -45,6 +45,9 @@ server.get('/user-memes', function(req, resp){
     })
 });
 
+server.post('/multiple-memes',function(req,resp){
+    
+})
      
 server.post('/user-profile', function(req, resp){
     var form = new formidable.IncomingForm();
@@ -95,18 +98,18 @@ server.post('/user-profile', function(req, resp){
     });
   });
 
-server.post('/upload-meme', urlencoder,function(req, resp){
-    const searchMeme = { memeTitle: req.body.memeTitle};
-    memeModel.deleteOne(searchMeme, function (err, foundMeme) {
-//    userModel.deleteOne(searchMeme, function (err, userMeme){  //trying to delete the meme in the user schema          
+//server.post('/upload-meme', urlencoder,function(req, resp){
+//    const searchMeme = { memeTitle: req.body.memeTitle};
+//    memeModel.deleteOne(searchMeme, function (err, foundMeme) {
+////    userModel.deleteOne(searchMeme, function (err, userMeme){  //trying to delete the meme in the user schema          
+////    });
+////    const id = {_id};
+////    memeModel.findOne(_id,funtion(err,foundId){});    
+//    console.log("Deleted Object: " + foundMeme);
+//    console.log("Deleted Object");
+//    resp.render('./pages/upload-meme');
 //    });
-//    const id = {_id};
-//    memeModel.findOne(_id,funtion(err,foundId){});    
-    console.log("Deleted Object: " + foundMeme);
-    console.log("Deleted Object");
-    resp.render('./pages/upload-meme');
-    });
-});
+//});
     
 server.post('/edit-meme', function(req,resp){
     var form = new formidable.IncomingForm();
