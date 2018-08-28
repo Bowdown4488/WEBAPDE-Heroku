@@ -162,16 +162,8 @@
       </div>
 
      <div class="well" style="background-color: #404040;">
-        <form action = 'add-Comment' method = 'post' role = 'form'> 
         <label> Comments:</label>
-        <div>
-            <textarea rows="2" cols="45" name = 'commentString' placeholder = 'Type your comments here'></textarea>
-        </div>
-         <input type="hidden" name= 'memeID' value="<%=memeID%>">
-         <input type="hidden" name= 'memeTitle' value="<%=memeTitle%>">
-         <input type="hidden" name= 'memeOwner' value="<%=memeOwner%>">
-        <input type="submit" class="btn btn-success btn-block" name= 'comment' value = 'comment' style="background-color: skyblue">
-        </form>
+        
           <!-- this is what you need for comments -->  
         <% for(var i = 0;i < memeComment.length;i++){ %>
         <div class="panel panel-default">
@@ -179,6 +171,15 @@
           <div style="margin-left: 50px;"><%=memeComment[i].commentString%></div>
         </div>
         <% } %> 
+        <form action = 'add-Comment' method = 'post' role = 'form'> 
+        <div>
+            <textarea rows="2" cols="45" name = 'commentString' placeholder = 'Type your comments here' style="background-color: #a6a6a6;"></textarea>
+        </div>
+         <input type="hidden" name= 'memeID' value="<%=memeID%>">
+         <input type="hidden" name= 'memeTitle' value="<%=memeTitle%>">
+         <input type="hidden" name= 'memeOwner' value="<%=memeOwner%>">
+        <input type="submit" class="btn btn-success btn-block" name= 'comment' value = 'comment' style="background-color: skyblue">
+        </form>
       </div>
 
     </div>
