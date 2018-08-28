@@ -180,6 +180,7 @@ server.get('/other-pageLoged/:name', function(req, resp){
     findProfile.then((foundUser)=>
     {
         console.log("Object: " + foundUser);
+        
         resp.render('./pages/other-pageLoged',{username: foundUser.username, image: foundUser.image, userBio: foundUser.userBio});//, 
     })
 });

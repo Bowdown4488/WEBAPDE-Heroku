@@ -10,6 +10,10 @@ const memeSchema = mongoose.Schema({
 //	memeDateTime: Date,
     memePrivacy:String,
     memeShared:[String],
+    memeComment:[{
+       commentOwner: String,
+       commentString: String
+    }]
 //	memeComment: Number
 //    ,
 //	memeComment: [{
@@ -113,6 +117,15 @@ function addLike(search, username){
     })
 }
 
+function pushComment(memeID, instance){
+    memeModel.findOneAndUpdate({
+    _id: memeID
+    },{
+    $push: {memeComment: instance}
+  }).then();
+}
+
+module.exports.pushComment = pushComment;
 module.exports.addLike = addLike;
 module.exports.editMeme = editMeme;
 module.exports.viewPublicPrivate = viewPublicPrivate;

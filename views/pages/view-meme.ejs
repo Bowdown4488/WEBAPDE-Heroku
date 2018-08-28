@@ -157,16 +157,15 @@
       </div>
 
       <div class="well" style="background-color: #404040;">
-        <label> Comments:</label>
-          <!-- this is what you need for comments -->
-        <span style="float: right;">ADD COMMENT</span>          
+          <!-- this is what you need for comments -->  
+        <% for(var i = 0;i < memeComment.length;i++){ %>
         <div class="panel panel-default">
-          <span style="font-weight: bold;">*insert name of user*: </span>         
-          <div style="margin-left: 50px;">MESSAGE</div>
+          <span style="font-weight: bold;"><%=memeComment[i].commentOwner%></span>         
+          <div style="margin-left: 50px;"><%=memeComment[i].commentString%></div>
         </div>
-
+        <% } %> 
       </div>
-
+          
     </div>
 </div>
 </div>

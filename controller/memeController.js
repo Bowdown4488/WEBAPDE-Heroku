@@ -151,7 +151,28 @@ server.get('/meme-tags', function(req, resp){
             resp.render('./pages/meme-tags',{data: data,tag: req.query.memeTag});
         })
 });
-   
+
+server.post('/add-Comment',function(req,resp){
+    if(req.session.usernamename !== null){
+    var form = new formidable.IncomingForm();
+      form.parse(req, function (err, fields, files) {
+        let comment = {
+            commentOwner: req.session.username,
+            commentString: fields.commentString
+        }
+        memeModel.pushComment(fields.memeID,comment);
+        
+    var findMeme = memeModel.findMemes(fields.memeTitle);
+    findMeme.then((foundMeme)=>
+    {
+        console.log("Meme Found: " + foundMeme.memeTitle);
+        console.log("Comments: " + foundMeme.memeComment);
+        resp.render('./pages/view-memeLoged',{memeID: foundMeme._id, memeTitle: foundMeme.memeTitle, memeimage: foundMeme.memeimage, memeTag: foundMeme.memeTag, memeOwner: foundMeme.memeOwner, memeLikes: foundMeme.memeLikes, memeComment: foundMeme.memeComment});
+    })
+    });    
+    }   
+});
+    
 server.get('/meme-tagsDefaultMeme/:tags', function(req, resp){
         console.log("Tag Search fields: " + req.params.tags);
         var find = req.params.tags;
@@ -178,7 +199,7 @@ server.get('/view-memeLoged/:title', function(req, resp){
     findMeme.then((foundMeme)=>
     {
         console.log("Meme Found: " + foundMeme.memeTitle);
-        resp.render('./pages/view-memeLoged',{memeTitle: foundMeme.memeTitle, memeimage: foundMeme.memeimage, memeTag: foundMeme.memeTag, memeOwner: foundMeme.memeOwner, memeLikes: foundMeme.memeLikes});
+        resp.render('./pages/view-memeLoged',{memeID: foundMeme._id, memeTitle: foundMeme.memeTitle, memeimage: foundMeme.memeimage, memeTag: foundMeme.memeTag, memeOwner: foundMeme.memeOwner, memeLikes: foundMeme.memeLikes, memeComment: foundMeme.memeComment});
     })
 });
     
@@ -188,7 +209,7 @@ server.get('/view-meme/:title', function(req, resp){
     findMeme.then((foundMeme)=>
     {
         console.log("Meme Found: " + foundMeme.memeTitle);
-        resp.render('./pages/view-meme',{memeTitle: foundMeme.memeTitle, memeimage: foundMeme.memeimage, memeTag: foundMeme.memeTag, memeOwner: foundMeme.memeOwner, memeLikes: foundMeme.memeLikes});
+        resp.render('./pages/view-meme',{memeID: foundMeme._id, memeTitle: foundMeme.memeTitle, memeimage: foundMeme.memeimage, memeTag: foundMeme.memeTag, memeOwner: foundMeme.memeOwner, memeLikes: foundMeme.memeLikes, memeComment: foundMeme.memeComment});
     })
 });
     
